@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G2136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="vXF-Vk-Tr0">
+            <objects>
+                <viewController id="hzG-zT-JAJ" customClass="ViewController" customModule="MAF2" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LS3-EL-1tB"/>
+                        <viewControllerLayoutGuide type="bottom" id="zvF-21-ubU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hz9-jo-QCF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="seb-QC-VlE">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unx-f2-h0f">
+                                <rect key="frame" x="0.0" y="615" width="99" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Capture"/>
+                                <connections>
+                                    <action selector="captureAction:" destination="hzG-zT-JAJ" eventType="touchUpInside" id="hcs-mt-KbG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljS-nY-Sbr">
+                                <rect key="frame" x="107" y="615" width="102" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Record"/>
+                                <connections>
+                                    <action selector="recordAction:" destination="hzG-zT-JAJ" eventType="touchUpInside" id="Brh-Y0-aLh"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ixE-47-g19">
+                                <rect key="frame" x="208" y="628" width="167" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Mode"/>
+                                    <segment title="RecordMode"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeWorkModeAction:" destination="hzG-zT-JAJ" eventType="valueChanged" id="j0W-eC-j3B"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="CaptureButton" destination="unx-f2-h0f" id="lo7-tM-h7R"/>
+                        <outlet property="ModeRecordModeToggle" destination="ixE-47-g19" id="X5e-Av-ej1"/>
+                        <outlet property="RecordButton" destination="ljS-nY-Sbr" id="XUu-Kh-yD9"/>
+                        <outlet property="changeWorkModeSegmentControl" destination="ixE-47-g19" id="II3-Vv-HW2"/>
+                        <outlet property="fpvPreviewView" destination="seb-QC-VlE" id="n21-rS-hcK"/>
+                        <outlet property="recordAction" destination="ljS-nY-Sbr" id="ABZ-IV-LRE"/>
+                        <outlet property="recordBtn" destination="ljS-nY-Sbr" id="0Cf-5I-zw4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b2p-rn-VfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-409" y="251"/>
+        </scene>
+    </scenes>
+</document>
