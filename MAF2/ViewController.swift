@@ -60,13 +60,106 @@ class ViewController: UIViewController, DJISDKManagerDelegate,DJIVideoFeedListen
         }
         
     }
+    
+    // function that fetches the camera. Since we know that well be using the mavic pro, 
+    // im gonna skip this function for now. in the productDisconnected method, i've hard coded
+    // the type.
+    func fetchCamera() -> DJICamera? {
+        if (DJISDKManager.product() != nil) {
+            return nil
+        }
         
+        // this is omitting the type cast thats in the objective c tutorial. 
+        // since both ifs are returning the same thing this shouldn't work
+        // but im gonna leave it for now.
+        if (DJISDKManager.product()?.isKind(of: DJIAircraft.self))! {
+            return DJISDKManager.product()?.camera
         
+        } else if (DJISDKManager.product()?.isKind(of: DJIHandheld.self))! {
+            //let hand:DJIHandheld = DJISDKManager.product()?.camera
+            return DJISDKManager.product()?.camera
+            
+        }
+        return nil
+    }
+    
+    
+    func productConnected(product:DJIBaseProduct!) {
+        if (product != nil) {
+            // [porduct setDelegate:self]
+            
+            let camera:DJICamera! = self.fetchCamera()!
+            if (camera != nil) {
+                camera.delegate = self
+            }
+            self.setupVideoPreviewer()
+        }
+    }
+    
+    func productDisconnected() {
+        let camera:DJICamera! = self.fetchCamera()
+        if (camera != nil && (camera.delegate?.isEqual(self))!) {
+            //camera.setDelegate(nil)
+        }
+        self.resetVideoPreview()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        let camera:DJICamera! = self.fetchCamera()
+        if (camera != nil && (camera.delegate?.isEqual(self))!) {
+            //camera.setDelegate(nil)
+        }
+        self.resetVideoPreview()
+    }
+    
+    func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
+        DJIVideoPreviewer.instance().push(videoData.count,: unit8_t, videoData.count: <#T##Int32#>)
+    }
+    
+    func camera(_ camera: DJICamera, didUpdate systemState: DJICameraSystemState) {
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.registerApp()
     }
     
+
     func registerApp() {
         // let appKey: String =  "8f40318cb61307382126467b"
         DJISDKManager.registerApp(with : self)
