@@ -10,7 +10,7 @@ import UIKit
 import DJISDK
 import DJIWidget
 
-class ViewController: UIViewController, DJISDKManagerDelegate,DJIVideoFeedListener,DJICameraDelegate{
+class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListener,DJICameraDelegate {
     
     
     @IBOutlet var recordBtn: UIButton!
@@ -73,20 +73,20 @@ class ViewController: UIViewController, DJISDKManagerDelegate,DJIVideoFeedListen
         // since both ifs are returning the same thing this shouldn't work
         // but im gonna leave it for now.
         if (DJISDKManager.product()?.isKind(of: DJIAircraft.self))! {
-            return DJISDKManager.product()?.camera
+            return (DJISDKManager.product() as? DJIAircraft)?.camera
         
         } else if (DJISDKManager.product()?.isKind(of: DJIHandheld.self))! {
             //let hand:DJIHandheld = DJISDKManager.product()?.camera
-            return DJISDKManager.product()?.camera
+            return (DJISDKManager.product() as? DJIHandheld)?.camera
             
         }
         return nil
     }
     
     
-    func productConnected(product:DJIBaseProduct!) {
-        if (product != nil) {
-            // [porduct setDelegate:self]
+    func productConnected(_ product:DJIBaseProduct?) {
+        if let product = product {
+            product.delegate = self as? DJIBaseProductDelegate;
             
             let camera:DJICamera! = self.fetchCamera()!
             if (camera != nil) {
@@ -97,9 +97,9 @@ class ViewController: UIViewController, DJISDKManagerDelegate,DJIVideoFeedListen
     }
     
     func productDisconnected() {
-        let camera:DJICamera! = self.fetchCamera()
-        if (camera != nil && (camera.delegate?.isEqual(self))!) {
-            //camera.setDelegate(nil)
+        guard let camera:DJICamera = self.fetchCamera() else {return}
+        if let delegate = camera.delegate, delegate === self {
+            camera.delegate = nil;
         }
         self.resetVideoPreview()
     }
@@ -108,50 +108,26 @@ class ViewController: UIViewController, DJISDKManagerDelegate,DJIVideoFeedListen
         super.viewWillDisappear(animated)
         let camera:DJICamera! = self.fetchCamera()
         if (camera != nil && (camera.delegate?.isEqual(self))!) {
-            //camera.setDelegate(nil)
+            camera.delegate = nil
         }
         self.resetVideoPreview()
     }
     
-    func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
-        DJIVideoPreviewer.instance().push(videoData.count,: unit8_t, videoData.count: <#T##Int32#>)
+    public func videoFeed(_ videoFeed: DJIVideoFeed, didUpdateVideoData videoData: Data) {
+        var data2 = videoData
+        data2.withUnsafeMutableBytes({ (data: UnsafeMutablePointer<UInt8>) in
+            DJIVideoPreviewer.instance().push(data, length: Int32(videoData.count))
+
+        })
     }
+    
     
     func camera(_ camera: DJICamera, didUpdate systemState: DJICameraSystemState) {
     }
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     
     
     override func viewDidAppear(_ animated: Bool) {
