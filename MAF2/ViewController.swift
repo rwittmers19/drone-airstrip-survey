@@ -34,10 +34,10 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         DJIVideoPreviewer.instance().setView(self.fpvPreviewView)
         guard let product:DJIBaseProduct = DJISDKManager.product() else {return}
         
-        if (product.model == DJIAircraftModelNameA3 ||
+        if product.model == DJIAircraftModelNameA3 ||
             product.model == DJIAircraftModelNameN3 ||
             product.model == DJIAircraftModelNameMatrice600 ||
-            product.model == DJIAircraftModelNameMatrice600Pro) {
+            product.model == DJIAircraftModelNameMatrice600Pro {
             DJISDKManager.videoFeeder()?.secondaryVideoFeed.add(self, with: nil)
         } else {
             DJISDKManager.videoFeeder()?.primaryVideoFeed.add(self, with: nil)
@@ -50,10 +50,10 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         DJIVideoPreviewer.instance().unSetView()
         guard let product:DJIBaseProduct = DJISDKManager.product() else {return}
         
-        if (product.model == DJIAircraftModelNameA3 ||
+        if product.model == DJIAircraftModelNameA3 ||
             product.model == DJIAircraftModelNameN3 ||
             product.model == DJIAircraftModelNameMatrice600 ||
-            product.model == DJIAircraftModelNameMatrice600Pro) {
+            product.model == DJIAircraftModelNameMatrice600Pro {
             DJISDKManager.videoFeeder()?.secondaryVideoFeed.remove(self)
         } else {
             DJISDKManager.videoFeeder()?.primaryVideoFeed.remove(self)
@@ -61,22 +61,16 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         
     }
     
-    // function that fetches the camera. Since we know that well be using the mavic pro, 
-    // im gonna skip this function for now. in the productDisconnected method, i've hard coded
-    // the type.
     func fetchCamera() -> DJICamera? {
-        if (DJISDKManager.product() != nil) {
+        if DJISDKManager.product() != nil {
             return nil
         }
         
-        // this is omitting the type cast thats in the objective c tutorial. 
-        // since both ifs are returning the same thing this shouldn't work
-        // but im gonna leave it for now.
-        if (DJISDKManager.product()?.isKind(of: DJIAircraft.self))! {
+
+        if let productKind = DJISDKManager.product(), productKind.isKind(of:DJIAircraft.self) {
             return (DJISDKManager.product() as? DJIAircraft)?.camera
         
-        } else if (DJISDKManager.product()?.isKind(of: DJIHandheld.self))! {
-            //let hand:DJIHandheld = DJISDKManager.product()?.camera
+        } else if let productKind2 = DJISDKManager.product(), productKind2.isKind(of:DJIHandheld.self) {
             return (DJISDKManager.product() as? DJIHandheld)?.camera
             
         }
@@ -86,12 +80,13 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     
     func productConnected(_ product:DJIBaseProduct?) {
         if let product = product {
+            // as? is how to cast in Swift
             product.delegate = self as? DJIBaseProductDelegate;
             
-            let camera:DJICamera! = self.fetchCamera()!
-            if (camera != nil) {
-                camera.delegate = self
-            }
+            guard let camera:DJICamera = self.fetchCamera() else {return}
+            // we dont need to check for nil as in the tutorial because of the 'guard let' above
+            camera.delegate = self
+            
             self.setupVideoPreviewer()
         }
     }
@@ -106,8 +101,8 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        let camera:DJICamera! = self.fetchCamera()
-        if (camera != nil && (camera.delegate?.isEqual(self))!) {
+        guard let camera:DJICamera = self.fetchCamera() else {return}
+        if let delegate = camera.delegate, delegate === self {
             camera.delegate = nil
         }
         self.resetVideoPreview()
@@ -121,15 +116,11 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         })
     }
     
-    
     func camera(_ camera: DJICamera, didUpdate systemState: DJICameraSystemState) {
     }
     
     
-    
-
-    
-    
+    // from the register app tutorial
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.registerApp()
@@ -173,8 +164,6 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    // CAMERA APP
     
 
 
