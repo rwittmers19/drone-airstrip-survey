@@ -6,6 +6,8 @@ target 'MAF2' do
   use_frameworks!
   # Pods for MAF2
   pod 'DJIWidget', '~> 1.6.1'
+  pod 'DJI-SDK-iOS', '~> 4.11'
+  pod 'DJI-UXSDK-iOS', '~> 4.11'
 
   target 'MAF2Tests' do
     inherit! :search_paths

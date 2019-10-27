@@ -149,8 +149,8 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     }
     
     func showAlertViewWIthTitle(title:NSString, withMessage message:NSString ) {
-        let alert:UIAlertController = UIAlertController(title:title as String, message:message as String, preferredStyle:UIAlertControllerStyle.alert)
-        let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertActionStyle.`default`, handler:nil)
+        let alert:UIAlertController = UIAlertController(title:title as String, message:message as String, preferredStyle:UIAlertController.Style.alert)
+        let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.`default`, handler:nil)
         alert.addAction(okAction)
         self.present(alert, animated:true, completion:nil)
     }

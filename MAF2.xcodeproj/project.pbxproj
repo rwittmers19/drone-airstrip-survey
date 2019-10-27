@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C1278326260E8DB266F431E /* Pods_MAF2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DDBF4D1F29E8EE2C6A0FD84 /* Pods_MAF2.framework */; };
-		721CDE22A57F0BAA9A6AA081 /* Pods_MAF2_MAF2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B4380E13062276ADB1F37C5 /* Pods_MAF2_MAF2UITests.framework */; };
+		0DAB03EC6CC9E3B25E0A28B8 /* Pods_MAF2_MAF2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A21E9155FB2E10119A70B9 /* Pods_MAF2_MAF2UITests.framework */; };
+		42AAF5C4286A03A95A979977 /* Pods_MAF2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263DDC2F7D6FD6A7F50A8E14 /* Pods_MAF2Tests.framework */; };
 		84D98B982341A0D400433960 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98B972341A0D400433960 /* AppDelegate.swift */; };
 		84D98B9A2341A0D400433960 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98B992341A0D400433960 /* ViewController.swift */; };
 		84D98B9D2341A0D400433960 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D98B9B2341A0D400433960 /* Main.storyboard */; };
@@ -16,9 +16,7 @@
 		84D98BA22341A0D400433960 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D98BA02341A0D400433960 /* LaunchScreen.storyboard */; };
 		84D98BAD2341A0D400433960 /* MAF2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98BAC2341A0D400433960 /* MAF2Tests.swift */; };
 		84D98BB82341A0D500433960 /* MAF2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98BB72341A0D500433960 /* MAF2UITests.swift */; };
-		84D98BC82342F5FA00433960 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D98BC72342F5FA00433960 /* DJISDK.framework */; };
-		84D98BC92342F5FA00433960 /* DJISDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 84D98BC72342F5FA00433960 /* DJISDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C41794936FE0D51C6C783FDE /* Pods_MAF2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DAE19F345455189B74FEBE /* Pods_MAF2Tests.framework */; };
+		D4DEC8CF58D029E99B0EF246 /* Pods_MAF2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,25 +36,11 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		84D98BCA2342F5FB00433960 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				84D98BC92342F5FA00433960 /* DJISDK.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		0CCE78CE65E3D1D9B1D24EB9 /* Pods-MAF2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2Tests.release.xcconfig"; path = "Target Support Files/Pods-MAF2Tests/Pods-MAF2Tests.release.xcconfig"; sourceTree = "<group>"; };
-		14DAE19F345455189B74FEBE /* Pods_MAF2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		14A21E9155FB2E10119A70B9 /* Pods_MAF2_MAF2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2_MAF2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AE1246CDA31974028836E6C /* Pods-MAF2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2Tests/Pods-MAF2Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		4B4380E13062276ADB1F37C5 /* Pods_MAF2_MAF2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2_MAF2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		263DDC2F7D6FD6A7F50A8E14 /* Pods_MAF2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D98B942341A0D400433960 /* MAF2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAF2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D98B972341A0D400433960 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84D98B992341A0D400433960 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -70,10 +54,10 @@
 		84D98BB32341A0D500433960 /* MAF2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAF2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D98BB72341A0D500433960 /* MAF2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAF2UITests.swift; sourceTree = "<group>"; };
 		84D98BB92341A0D500433960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84D98BC72342F5FA00433960 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = Frameworks/DJISDK.framework; sourceTree = "<group>"; };
-		9DDBF4D1F29E8EE2C6A0FD84 /* Pods_MAF2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84D98BC72342F5FA00433960 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = ../../Downloads/iOS_Mobile_SDK/DJISDK.framework; sourceTree = "<group>"; };
 		A3D4995CCAC321278D5F20AB /* Pods-MAF2-MAF2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C047110AB70D478C259ED0 /* Pods-MAF2-MAF2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.release.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2EB3102FA5FD9EF147DDC4 /* Pods-MAF2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2.debug.xcconfig"; path = "Target Support Files/Pods-MAF2/Pods-MAF2.debug.xcconfig"; sourceTree = "<group>"; };
 		BAF1A4469A0EA6DC6480D1B0 /* Pods-MAF2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2.release.xcconfig"; path = "Target Support Files/Pods-MAF2/Pods-MAF2.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,8 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D98BC82342F5FA00433960 /* DJISDK.framework in Frameworks */,
-				5C1278326260E8DB266F431E /* Pods_MAF2.framework in Frameworks */,
+				D4DEC8CF58D029E99B0EF246 /* Pods_MAF2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C41794936FE0D51C6C783FDE /* Pods_MAF2Tests.framework in Frameworks */,
+				42AAF5C4286A03A95A979977 /* Pods_MAF2Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,7 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				721CDE22A57F0BAA9A6AA081 /* Pods_MAF2_MAF2UITests.framework in Frameworks */,
+				0DAB03EC6CC9E3B25E0A28B8 /* Pods_MAF2_MAF2UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,9 +93,9 @@
 		19540DE11AD655355E4D0386 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9DDBF4D1F29E8EE2C6A0FD84 /* Pods_MAF2.framework */,
-				4B4380E13062276ADB1F37C5 /* Pods_MAF2_MAF2UITests.framework */,
-				14DAE19F345455189B74FEBE /* Pods_MAF2Tests.framework */,
+				B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */,
+				14A21E9155FB2E10119A70B9 /* Pods_MAF2_MAF2UITests.framework */,
+				263DDC2F7D6FD6A7F50A8E14 /* Pods_MAF2Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -195,7 +178,6 @@
 				84D98B902341A0D400433960 /* Sources */,
 				84D98B912341A0D400433960 /* Frameworks */,
 				84D98B922341A0D400433960 /* Resources */,
-				84D98BCA2342F5FB00433960 /* Embed Frameworks */,
 				A49591AD64C1404B8E995FAC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -259,17 +241,20 @@
 					84D98B932341A0D400433960 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = V8CH9PK865;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 					};
 					84D98BA72341A0D400433960 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = V8CH9PK865;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 84D98B932341A0D400433960;
 					};
 					84D98BB22341A0D500433960 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = V8CH9PK865;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 84D98B932341A0D400433960;
 					};
@@ -280,6 +265,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -384,11 +370,15 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MAF2/Pods-MAF2-frameworks.sh",
+				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
+				"${PODS_ROOT}/DJI-UXSDK-iOS/iOS_UXSDK/DJIUXSDK.framework",
 				"${PODS_ROOT}/DJIWidget/FFmpeg/FFmpeg.framework",
 				"${BUILT_PRODUCTS_DIR}/DJIWidget/DJIWidget.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIUXSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFmpeg.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIWidget.framework",
 			);
@@ -404,11 +394,15 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests-frameworks.sh",
+				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
+				"${PODS_ROOT}/DJI-UXSDK-iOS/iOS_UXSDK/DJIUXSDK.framework",
 				"${PODS_ROOT}/DJIWidget/FFmpeg/FFmpeg.framework",
 				"${BUILT_PRODUCTS_DIR}/DJIWidget/DJIWidget.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIUXSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFmpeg.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIWidget.framework",
 			);
@@ -590,7 +584,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -609,7 +604,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -624,7 +620,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAF2.app/MAF2";
 			};
 			name = Debug;
@@ -640,7 +637,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MAF2.app/MAF2";
 			};
 			name = Release;
@@ -655,7 +653,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = MAF2;
 			};
 			name = Debug;
@@ -670,7 +669,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = MAF2;
 			};
 			name = Release;
