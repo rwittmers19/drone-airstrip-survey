@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  MAF2
 //
-//  Created by Admin on 9/29/19.
+//  Created by Matt on 9/29/19.
 //  Copyright © 2019 Admin. All rights reserved.
 //
 
@@ -17,16 +17,6 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     @IBOutlet var changeWorkModeSegmentControl: UISegmentedControl!
     @IBOutlet var fpvPreviewView: UIView!
     
-    @IBAction func captureAction(sender: AnyObject) {
-    }
-    
-    
-    @IBAction func recordAction(sender: AnyObject) {
-    }
-    
-    
-    @IBAction func changeWorkModeAction(sender: AnyObject) {
-    }
     
     // the setUpVideoPreviewer
     func setupVideoPreviewer() {
@@ -83,12 +73,22 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
             // as? is how to cast in Swift
             product.delegate = self as? DJIBaseProductDelegate;
             
-            guard let camera:DJICamera = self.fetchCamera() else {return}
+            guard let camera:DJICamera = self.fetchCamera() else {
+                // call the dispalyDeviceNotConnectedMessage method and exit
+                displayDeviceNotConnectedMessage()
+                return
+            }
             // we dont need to check for nil as in the tutorial because of the 'guard let' above
             camera.delegate = self
             
             self.setupVideoPreviewer()
         }
+    }
+    
+    // show a "device not connected" message if there isn't a drone hooked up. Not from the tutorial
+    func displayDeviceNotConnectedMessage() {
+        let message:NSString = "No device (ie drone) is connected to the app!"
+        self.showAlertViewWIthTitle(title: "Connect Device", withMessage:message)
     }
     
     func productDisconnected() {
@@ -119,7 +119,26 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     func camera(_ camera: DJICamera, didUpdate systemState: DJICameraSystemState) {
     }
     
+    @IBAction func captureAction(sender:Any) {
+        guard let camera:DJICamera = self.fetchCamera() else {return}
+        // WeakRef(target);
+        camera.setShootPhotoMode(.single, withCompletion: { (error:NSError?) -> () in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { () -> () in
+                camera.startShootPhoto(completion: {(error:Optional<NSError>) -> () in
+                    
+                    } as? DJICompletionBlock)
+            })
+        } as? DJICompletionBlock)
+    }
     
+    // choose between video and picture
+    func cameraDidUpdateSystemState (camera:DJICamera, systemState:DJICameraSystemState) {
+        if (systemState.mode == DJICameraShootPhotoMode) {
+            self.changeWorkModeSegmentControl.selectedSegmentIndex = 0
+        } else {
+            self.changeWorkModeSegmentControl.selectedSegmentIndex = 0
+        }
+    }
     // from the register app tutorial
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -164,8 +183,5 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-
 }
 
