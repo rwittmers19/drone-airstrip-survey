@@ -5,7 +5,7 @@
       location = "group:MAF2.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:Main.storyboard">
+      location = "group:/Users/admin/Desktop/drone-airstrip-survey/MAF2/Main.storyboard">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

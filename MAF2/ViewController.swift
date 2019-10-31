@@ -16,6 +16,7 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     @IBOutlet var recordBtn: UIButton!
     @IBOutlet var changeWorkModeSegmentControl: UISegmentedControl!
     @IBOutlet var fpvPreviewView: UIView!
+    @IBOutlet var currentRecordTimeLabel: UILabel!
     
     
     // the setUpVideoPreviewer
@@ -55,14 +56,12 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         if DJISDKManager.product() != nil {
             return nil
         }
-        
 
         if let productKind = DJISDKManager.product(), productKind.isKind(of:DJIAircraft.self) {
             return (DJISDKManager.product() as? DJIAircraft)?.camera
         
         } else if let productKind2 = DJISDKManager.product(), productKind2.isKind(of:DJIHandheld.self) {
             return (DJISDKManager.product() as? DJIHandheld)?.camera
-            
         }
         return nil
     }
@@ -117,6 +116,11 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     }
     
     func camera(_ camera: DJICamera, didUpdate systemState: DJICameraSystemState) {
+        if (systemState.mode == .shootPhoto) {
+         self.changeWorkModeSegmentControl.selectedSegmentIndex = 0
+        } else if (systemState.mode == .recordVideo){
+         self.changeWorkModeSegmentControl.selectedSegmentIndex = 1
+         }
     }
     
     @IBAction func captureAction(sender:Any) {
@@ -125,20 +129,37 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         camera.setShootPhotoMode(.single, withCompletion: { (error:NSError?) -> () in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { () -> () in
                 camera.startShootPhoto(completion: {(error:Optional<NSError>) -> () in
-                    
+                    guard let errorMessage = error?.description as NSString? else {return}
+                    self.showAlertViewWIthTitle(title: "Take Photo Error", withMessage:errorMessage)
                     } as? DJICompletionBlock)
             })
         } as? DJICompletionBlock)
     }
     
-    // choose between video and picture
-    func cameraDidUpdateSystemState (camera:DJICamera, systemState:DJICameraSystemState) {
-        if (systemState.mode == DJICameraShootPhotoMode) {
-            self.changeWorkModeSegmentControl.selectedSegmentIndex = 0
-        } else {
-            self.changeWorkModeSegmentControl.selectedSegmentIndex = 0
+    
+    @IBAction func recordAction(_ sender: UIButton) {
+    }
+    
+    
+    
+    @IBAction func changeWorkModeAction(_ sender: UISegmentedControl) {
+        let segmentControl:UISegmentedControl = sender
+        if let camera:DJICamera = self.fetchCamera() {
+            // to take picture
+            if (segmentControl.selectedSegmentIndex == 0) {
+                camera.setMode(.shootPhoto, withCompletion: {(error:NSError) -> () in
+                    self.showAlertViewWIthTitle(title: "Set DJICameraModeShootPhoto Failed", withMessage:error.description as NSString)
+                } as? DJICompletionBlock)
+            } else if (segmentControl.selectedSegmentIndex == 1) {
+                camera.setMode(.shootPhoto, withCompletion: {(error:NSError) -> () in
+                    self.showAlertViewWIthTitle(title: "Set DJICameraModeRecordVideo Failed", withMessage:error.description as NSString)
+                } as? DJICompletionBlock)
+            }
         }
     }
+    
+    
+    
     // from the register app tutorial
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

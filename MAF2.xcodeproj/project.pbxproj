@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		0DAB03EC6CC9E3B25E0A28B8 /* Pods_MAF2_MAF2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A21E9155FB2E10119A70B9 /* Pods_MAF2_MAF2UITests.framework */; };
 		42AAF5C4286A03A95A979977 /* Pods_MAF2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263DDC2F7D6FD6A7F50A8E14 /* Pods_MAF2Tests.framework */; };
+		84D944272369763A00FFF8C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98B992341A0D400433960 /* ViewController.swift */; };
 		84D98B982341A0D400433960 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98B972341A0D400433960 /* AppDelegate.swift */; };
-		84D98B9A2341A0D400433960 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98B992341A0D400433960 /* ViewController.swift */; };
 		84D98B9F2341A0D400433960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84D98B9E2341A0D400433960 /* Assets.xcassets */; };
 		84D98BA22341A0D400433960 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D98BA02341A0D400433960 /* LaunchScreen.storyboard */; };
 		84D98BAD2341A0D400433960 /* MAF2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98BAC2341A0D400433960 /* MAF2Tests.swift */; };
@@ -414,7 +414,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84D98B9A2341A0D400433960 /* ViewController.swift in Sources */,
+				84D944272369763A00FFF8C5 /* ViewController.swift in Sources */,
 				84D98B982341A0D400433960 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

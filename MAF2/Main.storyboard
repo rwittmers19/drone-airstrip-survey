@@ -56,13 +56,14 @@
                     <connections>
                         <segue destination="hzO-fP-9i0" kind="relationship" relationship="viewControllers" id="XAl-QL-ETd"/>
                         <segue destination="h8K-M5-N5J" kind="relationship" relationship="viewControllers" id="Qum-0r-Hcn"/>
+                        <segue destination="hzG-zT-JAJ" kind="relationship" relationship="viewControllers" id="cb4-0U-Bpv"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xWc-ug-Ijz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2302" y="-3"/>
         </scene>
-        <!--View Controller-->
+        <!--Item-->
         <scene sceneID="vXF-Vk-Tr0">
             <objects>
                 <viewController id="hzG-zT-JAJ" customClass="ViewController" customModule="MAF2" sceneMemberID="viewController">
@@ -80,48 +81,57 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unx-f2-h0f">
-                                <rect key="frame" x="0.0" y="615" width="99" height="52"/>
+                                <rect key="frame" x="0.0" y="568" width="99" height="52"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Capture"/>
                                 <connections>
                                     <action selector="captureActionWithSender:" destination="hzG-zT-JAJ" eventType="touchUpInside" id="hf5-jX-87e"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljS-nY-Sbr">
-                                <rect key="frame" x="107" y="615" width="102" height="53"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pz-Gv-yuj">
+                                <rect key="frame" x="107" y="567" width="102" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Record"/>
                                 <connections>
-                                    <action selector="recordAction:" destination="hzG-zT-JAJ" eventType="touchUpInside" id="Brh-Y0-aLh"/>
+                                    <action selector="recordAction:" destination="hzG-zT-JAJ" eventType="touchUpInside" id="cvV-ED-r9o"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ixE-47-g19">
-                                <rect key="frame" x="208" y="628" width="167" height="29"/>
+                                <rect key="frame" x="208" y="579" width="167" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Mode"/>
                                     <segment title="RecordMode"/>
                                 </segments>
                                 <connections>
-                                    <action selector="changeWorkModeAction:" destination="hzG-zT-JAJ" eventType="valueChanged" id="j0W-eC-j3B"/>
+                                    <action selector="changeWorkModeAction:" destination="hzG-zT-JAJ" eventType="valueChanged" id="IzR-cb-mfs"/>
                                 </connections>
                             </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pjh-0Q-fJJ">
+                                <rect key="frame" x="166" y="20" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="" value="NO"/>
+                        </userDefinedRuntimeAttributes>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="LQR-PD-uaY"/>
                     <connections>
                         <outlet property="CaptureButton" destination="unx-f2-h0f" id="lo7-tM-h7R"/>
                         <outlet property="ModeRecordModeToggle" destination="ixE-47-g19" id="X5e-Av-ej1"/>
-                        <outlet property="RecordButton" destination="ljS-nY-Sbr" id="XUu-Kh-yD9"/>
                         <outlet property="changeWorkModeSegmentControl" destination="ixE-47-g19" id="II3-Vv-HW2"/>
+                        <outlet property="currentRecordTimeLabel" destination="Pjh-0Q-fJJ" id="8WB-xa-RX7"/>
                         <outlet property="fpvPreviewView" destination="seb-QC-VlE" id="n21-rS-hcK"/>
-                        <outlet property="recordAction" destination="ljS-nY-Sbr" id="ABZ-IV-LRE"/>
-                        <outlet property="recordBtn" destination="ljS-nY-Sbr" id="0Cf-5I-zw4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2p-rn-VfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2332" y="853"/>
+            <point key="canvasLocation" x="-2303" y="781"/>
         </scene>
     </scenes>
 </document>
