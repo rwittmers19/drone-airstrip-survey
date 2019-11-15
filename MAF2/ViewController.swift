@@ -18,6 +18,9 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     @IBOutlet var fpvPreviewView: UIView!
     @IBOutlet var currentRecordTimeLabel: UILabel!
     
+    // the variable for the camera method
+    var isRecording = false
+    
     
     // the setUpVideoPreviewer
     func setupVideoPreviewer() {
@@ -53,7 +56,10 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     }
     
     func fetchCamera() -> DJICamera? {
-        if DJISDKManager.product() != nil {
+        if DJISDKManager.product() == nil {
+            // if the product doesn't exist, display a "device not found" message and
+            // exit the method
+            displayDeviceNotConnectedMessage()
             return nil
         }
 
@@ -66,28 +72,22 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         return nil
     }
     
-    
+    // show a "device not connected" message
+    func displayDeviceNotConnectedMessage() {
+        let message:NSString = "No device (ie drone) is connected to the app!"
+        self.showAlertViewWIthTitle(title: "Connect Device", withMessage:message)
+    }
+
     func productConnected(_ product:DJIBaseProduct?) {
         if let product = product {
             // as? is how to cast in Swift
             product.delegate = self as? DJIBaseProductDelegate;
-            
-            guard let camera:DJICamera = self.fetchCamera() else {
-                // call the dispalyDeviceNotConnectedMessage method and exit
-                displayDeviceNotConnectedMessage()
-                return
-            }
+            guard let camera:DJICamera = self.fetchCamera() else {return}
             // we dont need to check for nil as in the tutorial because of the 'guard let' above
             camera.delegate = self
             
             self.setupVideoPreviewer()
         }
-    }
-    
-    // show a "device not connected" message if there isn't a drone hooked up. Not from the tutorial
-    func displayDeviceNotConnectedMessage() {
-        let message:NSString = "No device (ie drone) is connected to the app!"
-        self.showAlertViewWIthTitle(title: "Connect Device", withMessage:message)
     }
     
     func productDisconnected() {
@@ -121,8 +121,14 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         } else if (systemState.mode == .recordVideo){
          self.changeWorkModeSegmentControl.selectedSegmentIndex = 1
          }
+        
+        self.isRecording = systemState.isRecording
+        
+        self.currentRecordTimeLabel.isHidden = !self.isRecording
+        //self.currentRecordTimeLabel.te
     }
-    
+
+
     @IBAction func captureAction(sender:Any) {
         guard let camera:DJICamera = self.fetchCamera() else {return}
         // WeakRef(target);
@@ -138,6 +144,8 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     
     
     @IBAction func recordAction(_ sender: UIButton) {
+        guard let camera:DJICamera = self.fetchCamera() else {return}
+        //if (self.is)
     }
     
     
@@ -197,7 +205,8 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.currentRecordTimeLabel.isHidden = true
+        
     }
 
     override func didReceiveMemoryWarning() {
