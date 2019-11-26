@@ -10,7 +10,6 @@
 		0DAB03EC6CC9E3B25E0A28B8 /* Pods_MAF2_MAF2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A21E9155FB2E10119A70B9 /* Pods_MAF2_MAF2UITests.framework */; };
 		42AAF5C4286A03A95A979977 /* Pods_MAF2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263DDC2F7D6FD6A7F50A8E14 /* Pods_MAF2Tests.framework */; };
 		8499544F236E0BFE007D3AF1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499544E236E0BFE007D3AF1 /* RoundButton.swift */; };
-		84995451237E6CC2007D3AF1 /* DJIRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84995450237E6CC2007D3AF1 /* DJIRootViewController.swift */; };
 		84D944272369763A00FFF8C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98B992341A0D400433960 /* ViewController.swift */; };
 		84D9442A236A89A100FFF8C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D94429236A899100FFF8C5 /* Main.storyboard */; };
 		84D9442B236A89A300FFF8C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D94429236A899100FFF8C5 /* Main.storyboard */; };
@@ -21,6 +20,7 @@
 		84D98BA22341A0D400433960 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84D98BA02341A0D400433960 /* LaunchScreen.storyboard */; };
 		84D98BAD2341A0D400433960 /* MAF2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98BAC2341A0D400433960 /* MAF2Tests.swift */; };
 		84D98BB82341A0D500433960 /* MAF2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98BB72341A0D500433960 /* MAF2UITests.swift */; };
+		84E3D012237E88DA001F1C48 /* DJIRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3D011237E88DA001F1C48 /* DJIRootViewController.swift */; };
 		D4DEC8CF58D029E99B0EF246 /* Pods_MAF2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +47,6 @@
 		1AE1246CDA31974028836E6C /* Pods-MAF2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2Tests/Pods-MAF2Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		263DDC2F7D6FD6A7F50A8E14 /* Pods_MAF2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8499544E236E0BFE007D3AF1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
-		84995450237E6CC2007D3AF1 /* DJIRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJIRootViewController.swift; sourceTree = "<group>"; };
 		84D94429236A899100FFF8C5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "/Users/admin/Desktop/drone-airstrip-survey/MAF2/Main.storyboard"; sourceTree = "<absolute>"; };
 		84D9446A236AA17F00FFF8C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		84D9446C236AA1B000FFF8C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +63,7 @@
 		84D98BB72341A0D500433960 /* MAF2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAF2UITests.swift; sourceTree = "<group>"; };
 		84D98BB92341A0D500433960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84D98BC72342F5FA00433960 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = ../../Downloads/iOS_Mobile_SDK/DJISDK.framework; sourceTree = "<group>"; };
+		84E3D011237E88DA001F1C48 /* DJIRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJIRootViewController.swift; sourceTree = "<group>"; };
 		A3D4995CCAC321278D5F20AB /* Pods-MAF2-MAF2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C047110AB70D478C259ED0 /* Pods-MAF2-MAF2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.release.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,8 +165,8 @@
 				84D9446E236AA26200FFF8C5 /* Preview Content */,
 				84D94429236A899100FFF8C5 /* Main.storyboard */,
 				84D9446A236AA17F00FFF8C5 /* SceneDelegate.swift */,
+				84E3D011237E88DA001F1C48 /* DJIRootViewController.swift */,
 				84D9446C236AA1B000FFF8C5 /* ContentView.swift */,
-				84995450237E6CC2007D3AF1 /* DJIRootViewController.swift */,
 				84D98B972341A0D400433960 /* AppDelegate.swift */,
 				84D98B992341A0D400433960 /* ViewController.swift */,
 				8499544E236E0BFE007D3AF1 /* RoundButton.swift */,
@@ -448,7 +448,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84995451237E6CC2007D3AF1 /* DJIRootViewController.swift in Sources */,
+				84E3D012237E88DA001F1C48 /* DJIRootViewController.swift in Sources */,
 				84D944272369763A00FFF8C5 /* ViewController.swift in Sources */,
 				8499544F236E0BFE007D3AF1 /* RoundButton.swift in Sources */,
 				84D98B982341A0D400433960 /* AppDelegate.swift in Sources */,

@@ -1,4 +1,3 @@
-//
 //  ViewController.swift
 //  MAF2
 //
@@ -10,9 +9,7 @@ import UIKit
 import DJISDK
 import DJIWidget
 
-class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListener,DJICameraDelegate {
-    
-    
+class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListener, DJICameraDelegate {
     @IBOutlet var recordBtn: UIButton!
     @IBOutlet var changeWorkModeSegmentControl: UISegmentedControl!
     @IBOutlet var fpvPreviewView: UIView!
@@ -167,6 +164,24 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     }
     
     
+    @IBAction func confirmAlert(_ sender: UIButton) {
+        let alertController = UIAlertController(title: "Start Survey", message: "All of the presets go here.", preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Confirm", style: .default)
+        { (alertAction) in
+            // next scene
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    
+    
     
     // from the register app tutorial
     override func viewDidAppear(_ animated: Bool) {
@@ -176,7 +191,6 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     
 
     func registerApp() {
-        // let appKey: String =  "8f40318cb61307382126467b"
         DJISDKManager.registerApp(with : self)
     }
     
@@ -206,7 +220,16 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.currentRecordTimeLabel.isHidden = true
-        
+    }
+    
+    // Set the shouldAutorotate to False
+    override open var shouldAutorotate: Bool {
+       return false
+    }
+
+    // Specify the orientation.
+    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscape
     }
 
     override func didReceiveMemoryWarning() {
@@ -214,4 +237,3 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         // Dispose of any resources that can be recreated.
     }
 }
-
