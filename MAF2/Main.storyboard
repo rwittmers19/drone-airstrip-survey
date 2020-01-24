@@ -179,6 +179,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="DroneSurvey:" destination="Su9-ob-y1n" eventType="touchUpInside" id="EVl-dd-xvM"/>
                                     <action selector="confirmAlert:" destination="Su9-ob-y1n" eventType="touchUpInside" id="Ujk-N2-vO5"/>
                                     <action selector="showPopup:" destination="Su9-ob-y1n" eventType="touchUpInside" id="Hdd-Dp-R3e"/>
                                 </connections>
@@ -298,6 +299,10 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="syI-g6-eIa">
                                 <rect key="frame" x="361" y="56" width="451" height="263"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="cEf-pc-h3A" appends="YES" id="dJe-Rn-rXb"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -309,6 +314,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4e-BC-4k1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="cEf-pc-h3A">
+                    <connections>
+                        <action selector="longPressAddWayPoint:" destination="YKu-Ji-h8V" id="Bmv-hp-zaZ"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="672" y="786"/>
         </scene>
@@ -363,7 +373,6 @@
         <!--Navigation Controller-->
         <scene sceneID="o22-fc-PMM">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="UfK-uk-xZc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sIu-Fo-Ldy" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Kcq-wY-TWB"/>
@@ -376,6 +385,7 @@
                         <segue destination="jwx-2g-xGG" kind="relationship" relationship="rootViewController" id="SRc-7E-Hxn"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UfK-uk-xZc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-803.57142857142856" y="785.50724637681162"/>
         </scene>
@@ -384,6 +394,6 @@
         <image name="DF_dl_logo_MAF_Logo_BLACK" width="1200" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SRc-7E-Hxn"/>
+        <segue reference="psH-da-nKg"/>
     </inferredMetricsTieBreakers>
 </document>
