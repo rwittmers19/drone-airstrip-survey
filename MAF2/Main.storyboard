@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jwx-2g-xGG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jwx-2g-xGG">
     <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,9 +35,6 @@
                                     <segment title="CameraMode"/>
                                     <segment title="RecordMode"/>
                                 </segments>
-                                <connections>
-                                    <action selector="changeWorkModeAction:" destination="hzG-zT-JAJ" eventType="valueChanged" id="IzR-cb-mfs"/>
-                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pz-Gv-yuj">
                                 <rect key="frame" x="725" y="343" width="111" height="53"/>
@@ -45,9 +42,6 @@
                                 <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Record"/>
-                                <connections>
-                                    <action selector="recordAction:" destination="hzG-zT-JAJ" eventType="touchUpInside" id="cvV-ED-r9o"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="unx-f2-h0f">
                                 <rect key="frame" x="85" y="344" width="106" height="52"/>
@@ -55,9 +49,6 @@
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Capture"/>
-                                <connections>
-                                    <action selector="captureActionWithSender:" destination="hzG-zT-JAJ" eventType="touchUpInside" id="hf5-jX-87e"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBl-jx-fny">
                                 <rect key="frame" x="794" y="60" width="91" height="75"/>
@@ -65,7 +56,7 @@
                                 <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="HomePage"/>
                                 <connections>
-                                    <segue destination="sIu-Fo-Ldy" kind="show" id="2o3-p3-QGg"/>
+                                    <segue destination="sIu-Fo-Ldy" kind="show" id="A6O-R6-mfF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -77,15 +68,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="Frw-Lh-lkZ"/>
                     <connections>
-                        <outlet property="changeWorkModeSegmentControl" destination="ixE-47-g19" id="II3-Vv-HW2"/>
                         <outlet property="currentRecordTimeLabel" destination="Pjh-0Q-fJJ" id="8WB-xa-RX7"/>
                         <outlet property="fpvPreviewView" destination="seb-QC-VlE" id="n21-rS-hcK"/>
-                        <outlet property="recordBtn" destination="8Pz-Gv-yuj" id="Vxr-Xk-x6A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2p-rn-VfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1642" y="783"/>
+            <point key="canvasLocation" x="-1636" y="716"/>
         </scene>
         <!--Home-->
         <scene sceneID="XlQ-xQ-BXM">
@@ -293,7 +282,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="4dK-Q9-ZO7" kind="show" id="HZ5-4T-YW4"/>
+                                    <action selector="runMission:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="tG6-sU-8KD"/>
                                 </connections>
                             </button>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="syI-g6-eIa">
@@ -394,6 +383,6 @@
         <image name="DF_dl_logo_MAF_Logo_BLACK" width="1200" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="psH-da-nKg"/>
+        <segue reference="SRc-7E-Hxn"/>
     </inferredMetricsTieBreakers>
 </document>

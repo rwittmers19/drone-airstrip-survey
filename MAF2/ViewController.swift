@@ -18,6 +18,16 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     // the variable for the camera method
     var isRecording = false
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.registerApp()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.currentRecordTimeLabel.isHidden = true
+    }
+    
     
     // the setUpVideoPreviewer
     func setupVideoPreviewer() {
@@ -68,6 +78,11 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         }
         return nil
     }
+    
+    func setShootPhotoMode () {
+        //DJICameraShootPhotoMode.
+    }
+    
     
     // show a "device not connected" message
     func displayDeviceNotConnectedMessage() {
@@ -140,12 +155,6 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     }
     
     
-    @IBAction func recordAction(_ sender: UIButton) {
-        guard let camera:DJICamera = self.fetchCamera() else {return}
-        //if (self.is)
-    }
-    
-    
     
     @IBAction func changeWorkModeAction(_ sender: UISegmentedControl) {
         let segmentControl:UISegmentedControl = sender
@@ -182,13 +191,6 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     
     
     
-    
-    // from the register app tutorial
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.registerApp()
-    }
-    
 
     func registerApp() {
         DJISDKManager.registerApp(with : self)
@@ -215,11 +217,6 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.`default`, handler:nil)
         alert.addAction(okAction)
         self.present(alert, animated:true, completion:nil)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.currentRecordTimeLabel.isHidden = true
     }
     
     // Set the shouldAutorotate to False
