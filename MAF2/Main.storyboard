@@ -35,6 +35,9 @@
                                     <segment title="CameraMode"/>
                                     <segment title="RecordMode"/>
                                 </segments>
+                                <connections>
+                                    <action selector="changeWorkModeAction:" destination="hzG-zT-JAJ" eventType="valueChanged" id="Kyx-Uv-LEJ"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Pz-Gv-yuj">
                                 <rect key="frame" x="725" y="343" width="111" height="53"/>
@@ -49,6 +52,9 @@
                                 <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Capture"/>
+                                <connections>
+                                    <action selector="captureActionWithSender:" destination="hzG-zT-JAJ" eventType="touchUpInside" id="NtH-gk-GBh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBl-jx-fny">
                                 <rect key="frame" x="794" y="60" width="91" height="75"/>
@@ -68,8 +74,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="Frw-Lh-lkZ"/>
                     <connections>
+                        <outlet property="changeWorkModeSegmentControl" destination="ixE-47-g19" id="PgH-Xq-HIy"/>
                         <outlet property="currentRecordTimeLabel" destination="Pjh-0Q-fJJ" id="8WB-xa-RX7"/>
                         <outlet property="fpvPreviewView" destination="seb-QC-VlE" id="n21-rS-hcK"/>
+                        <outlet property="recordBtn" destination="8Pz-Gv-yuj" id="GYm-Oh-Yrh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b2p-rn-VfR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -79,7 +87,7 @@
         <!--Home-->
         <scene sceneID="XlQ-xQ-BXM">
             <objects>
-                <viewController title="Home" id="jwx-2g-xGG" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" title="Home" id="jwx-2g-xGG" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="DlD-DW-3hQ">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,8 +144,25 @@
                                     <segue destination="FXC-Fx-Yst" kind="show" id="xUu-MS-0ag"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qhc-jm-CwW" userLabel="Drone Survey Button" customClass="RoundButton" customModule="MAF2">
+                                <rect key="frame" x="29" y="198" width="274" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Camera View">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="13"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="hzG-zT-JAJ" kind="show" id="2ys-S9-SIc"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tQK-KI-5Tm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="bDj-Xk-20l"/>

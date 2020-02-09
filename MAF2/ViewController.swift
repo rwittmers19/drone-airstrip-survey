@@ -9,7 +9,7 @@ import UIKit
 import DJISDK
 import DJIWidget
 
-class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListener, DJICameraDelegate {
+class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListener, DJICameraDelegate, DJIBaseProductDelegate {
     @IBOutlet var recordBtn: UIButton!
     @IBOutlet var changeWorkModeSegmentControl: UISegmentedControl!
     @IBOutlet var fpvPreviewView: UIView!
@@ -93,12 +93,29 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     func productConnected(_ product:DJIBaseProduct?) {
         if let product = product {
             // as? is how to cast in Swift
-            product.delegate = self as? DJIBaseProductDelegate;
+            product.delegate = self;
             guard let camera:DJICamera = self.fetchCamera() else {return}
             // we dont need to check for nil as in the tutorial because of the 'guard let' above
             camera.delegate = self
             
             self.setupVideoPreviewer()
+            //self.showAlertViewWIthTitle(title: "Success", withMessage: "product connected!")
+            
+            DispatchQueue.main.async {
+                if DJISDKManager.missionControl() == nil {
+                    
+                    self.showAlertViewWIthTitle(title: "Bad", withMessage: "Nil mission control!")
+                } else {
+                    self.showAlertViewWIthTitle(title: "Good", withMessage: "Non-nil mission control!")
+                }
+            }
+            
+            
+        } else {
+            DispatchQueue.main.async {
+                self.showAlertViewWIthTitle(title: "Error connecting", withMessage: "Couldn't connect to product")
+            }
+            
         }
     }
     
@@ -173,7 +190,7 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     }
     
     
-    @IBAction func confirmAlert(_ sender: UIButton) {
+    /*@IBAction func confirmAlert(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Start Survey", message: "All of the presets go here.", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default)
@@ -187,7 +204,7 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
-    }
+    }*/
     
     
     
@@ -204,12 +221,18 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         var message:NSString = "Register App Successed!"
         if (error != nil) {
             message = "Register App Failed! Please enter your App Key and check the network."
+            self.showAlertViewWIthTitle(title: "Register App", withMessage:message)
         }
         else {
-            NSLog("registerAppSuccess")
-            DJISDKManager.startConnectionToProduct()
+            
+            let result = DJISDKManager.startConnectionToProduct()
+            if result {
+                NSLog("registerAppSuccess")
+            } else {
+                message = "Register app succeeded, connection start failed!"
+            }
         }
-        self.showAlertViewWIthTitle(title: "Register App", withMessage:message)
+        //self.showAlertViewWIthTitle(title: "Register App", withMessage:message)
     }
     
     func showAlertViewWIthTitle(title:NSString, withMessage message:NSString ) {
@@ -219,15 +242,15 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         self.present(alert, animated:true, completion:nil)
     }
     
-    // Set the shouldAutorotate to False
-    override open var shouldAutorotate: Bool {
-       return false
-    }
-
-    // Specify the orientation.
-    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .landscape
-    }
+//    // Set the shouldAutorotate to False
+//    override open var shouldAutorotate: Bool {
+//       return false
+//    }
+//
+//    // Specify the orientation.
+//    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+//        return .landscape
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
