@@ -23,7 +23,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let newViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "Home") as? ViewController else {return}
+            guard let newViewController: UIViewController = mainStoryboard.instantiateViewController(withIdentifier: "splash") as? CameraViewController else {return}
             window.rootViewController = newViewController
             self.window = window
             window.makeKeyAndVisible()

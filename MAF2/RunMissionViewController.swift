@@ -2,10 +2,9 @@ import UIKit
 import DJISDK
 import DJIWidget
 import MapKit
-import CoreLocation
 import DJIUXSDK
 
-class DJIRootViewController: UIViewController {
+class RunMissionViewController: UIViewController {
     
     
     // lat and log variables
@@ -13,17 +12,8 @@ class DJIRootViewController: UIViewController {
     let currentLong = -122.96015
     // the region of the map that's it automatically zoomed into.
     let regionRadius: CLLocationDistance = 200
-    // the mission for the to add thw waypoints to
-    let mission1:DJIMutableWaypointMission = DJIMutableWaypointMission.init()
-    
-    // to get the users location
-    
-//    // Ask for Authorisation from the User.
-//    self.locationManager.requestAlwaysAuthorization()
-
-    // For use in foreground
-//    self.locationManager.requestWhenInUseAuthorization()
-
+    // the mission for the to add the waypoints to
+    let mission:DJIMutableWaypointMission = DJIMutableWaypointMission.init()
 
     
     @IBOutlet weak var mapView: MKMapView!
@@ -34,27 +24,17 @@ class DJIRootViewController: UIViewController {
          centerMapOnLocation(location: initialLocation)
     }
     
-    
+    // zoom the map in to the location that we choose. Right now it is hard coded fo newberg OR
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
-                                                  latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
+                               latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
         // make that map satellite view
         mapView.mapType = MKMapType.satellite
     }
-    
-//
-//    @IBAction func DroneSurvey(_ sender: Any) {
-//        let alert = UIAlertController(title: "My Alert", message: "This is an alert.", preferredStyle: .alert)
-//        alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default, handler: { _ in
-//        NSLog("The \"OK\" alert occured.")
-//        }))
-//        self.present(alert, animated: true, completion: nil)
-//    }
 
-    
-    
-    // when the map get a long press, it adds a waypoint.
+
+    // when the map gets a long press, it adds a waypoint.
     @IBAction func longPressAddWayPoint(_ gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state == UIGestureRecognizer.State.began {
             let touchPoint: CGPoint = gestureRecognizer.location(in: mapView)
@@ -64,19 +44,15 @@ class DJIRootViewController: UIViewController {
             // create the waypoint
             let wayPoint:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
             // add the new waypoint
-            mission1.add(wayPoint)
+            mission.add(wayPoint)
   
         }
     }
     
-    func showAlertViewWithTitle(title:String, withMessage message:String ) {
-        let alert:UIAlertController = UIAlertController(title:title, message:message, preferredStyle:UIAlertController.Style.alert)
-        let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.`default`, handler:nil)
-        alert.addAction(okAction)
-        self.present(alert, animated:true, completion:nil)
-    }
+    
     
 
+    // after the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
     @IBAction func runMission(_ sender: Any) {
         guard let missionControl = DJISDKManager.missionControl() else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get mission control!")
@@ -89,7 +65,7 @@ class DJIRootViewController: UIViewController {
         }
         
         // "make sure the internal state of the mission plan is valid."
-        if let err = mission1.checkParameters() {
+        if let err = mission.checkParameters() {
             self.showAlertViewWithTitle(title: "Mission not valid", withMessage: err.localizedDescription)
         } else {
             // print the current state of the mission to the phone screen
@@ -107,7 +83,7 @@ class DJIRootViewController: UIViewController {
             
             self.showAlertViewWithTitle(title: "Mission operator state:", withMessage: String(describing: (missionOperator.currentState)))
             // load the mission
-            if let loadErr = missionOperator.load(mission1) {
+            if let loadErr = missionOperator.load(mission) {
                 self.showAlertViewWithTitle(title: "Error loading mission", withMessage: loadErr.localizedDescription)
             } else {
                 
@@ -149,13 +125,6 @@ class DJIRootViewController: UIViewController {
             }
             
         }
-        
-        
-        
-        
-        
-        
-        
     }
     
     
@@ -165,5 +134,13 @@ class DJIRootViewController: UIViewController {
         annotation.coordinate = pointedCoordinate
         annotation.title = "waypoint"
         mapView.addAnnotation(annotation)
+    }
+    
+    // show the message as a pop up window in the app
+    func showAlertViewWithTitle(title:String, withMessage message:String ) {
+        let alert:UIAlertController = UIAlertController(title:title, message:message, preferredStyle:UIAlertController.Style.alert)
+        let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.`default`, handler:nil)
+        alert.addAction(okAction)
+        self.present(alert, animated:true, completion:nil)
     }
 }

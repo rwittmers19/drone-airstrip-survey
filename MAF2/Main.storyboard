@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="jwx-2g-xGG">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vQi-B9-St9">
     <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -123,10 +123,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="DF_dl_logo_MAF_Logo_BLACK" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-vK-zsw">
-                                <rect key="frame" x="204" y="34" width="488" height="168"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Whe-Mq-cuu" userLabel="Map Button" customClass="RoundButton" customModule="MAF2">
                                 <rect key="frame" x="311" y="267" width="274" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -161,6 +157,10 @@
                                     <segue destination="hzG-zT-JAJ" kind="show" id="2ys-S9-SIc"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="DF_dl_logo_MAF_Logo_BLACK" translatesAutoresizingMaskIntoConstraints="NO" id="Pun-vK-zsw">
+                                <rect key="frame" x="204" y="44" width="488" height="168"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="tQK-KI-5Tm"/>
@@ -403,11 +403,63 @@
             </objects>
             <point key="canvasLocation" x="-803.57142857142856" y="785.50724637681162"/>
         </scene>
+        <!--Connect View Controller-->
+        <scene sceneID="rO4-hC-Pgn">
+            <objects>
+                <viewController storyboardIdentifier="splash" id="vQi-B9-St9" customClass="ConnectViewController" customModule="MAF2" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sa3-3e-wKP">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="DF_dl_logo_MAF_Logo_BLACK" translatesAutoresizingMaskIntoConstraints="NO" id="vZy-KA-FwT">
+                                <rect key="frame" x="-152" y="0.0" width="1200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="pby-dz-ZhJ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Could Not Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rs9-r8-IBh">
+                                <rect key="frame" x="375" y="197" width="146.33333333333337" height="20.333333333333343"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rh2-T8-tDP">
+                                <rect key="frame" x="423" y="323" width="50" height="30"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Retry">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="retry:" destination="vQi-B9-St9" eventType="touchUpInside" id="m9V-CS-u1c"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="vZy-KA-FwT" firstAttribute="top" secondItem="bZF-tW-Quq" secondAttribute="top" id="1Ob-O0-uT1"/>
+                            <constraint firstItem="rs9-r8-IBh" firstAttribute="centerY" secondItem="Sa3-3e-wKP" secondAttribute="centerY" id="GKM-F0-gzQ"/>
+                            <constraint firstItem="vZy-KA-FwT" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="aPJ-6M-LBu"/>
+                            <constraint firstItem="rs9-r8-IBh" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="dLc-Uu-FdU"/>
+                            <constraint firstItem="bZF-tW-Quq" firstAttribute="bottom" secondItem="Rh2-T8-tDP" secondAttribute="bottom" constant="40" id="kJU-vr-c08"/>
+                            <constraint firstItem="Rh2-T8-tDP" firstAttribute="centerX" secondItem="Sa3-3e-wKP" secondAttribute="centerX" id="mKB-03-mWQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bZF-tW-Quq"/>
+                    </view>
+                    <connections>
+                        <outlet property="couldNotConnect" destination="rs9-r8-IBh" id="MC5-i2-7Yv"/>
+                        <outlet property="retryButton" destination="Rh2-T8-tDP" id="ueV-6F-loU"/>
+                        <segue destination="jwx-2g-xGG" kind="show" identifier="toMainMenu" id="uOl-xr-doM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YJe-aC-8Lu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-924.10714285714278" y="1879.7101449275365"/>
+        </scene>
     </scenes>
     <resources>
         <image name="DF_dl_logo_MAF_Logo_BLACK" width="1200" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SRc-7E-Hxn"/>
+        <segue reference="psH-da-nKg"/>
     </inferredMetricsTieBreakers>
 </document>
