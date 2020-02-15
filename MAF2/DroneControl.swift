@@ -3,22 +3,18 @@ import UIKit
 import DJISDK
 
 /*
- A singleton that gets the drone set up.
+ A singleton class that gets the drone set up.
  */
 class DroneControl : NSObject, DJISDKManagerDelegate {
-    func didUpdateDatabaseDownloadProgress(_ progress: Progress) {
-        // don't care
-    }
+    private static var droneSetUp:DroneControl? = nil
+    public var product:DJIBaseProduct? = nil
+    private var completion:(Bool) -> Void
+    
     
     public static var instance: DroneControl? {
         return DroneControl.droneSetUp
     }
     
-    private static var droneSetUp:DroneControl? = nil
-    
-    public var product:DJIBaseProduct? = nil
-    
-    private var completion:(Bool) -> Void
     
     private init(completion:@escaping (Bool)-> Void) {
         
@@ -31,30 +27,28 @@ class DroneControl : NSObject, DJISDKManagerDelegate {
         DroneControl.droneSetUp = DroneControl(completion:completion)
     }
     
+    
     func productConnected(_ product:DJIBaseProduct?) {
         self.product = product
         if let product = product {
             completion(true)
             
         } else {
-           
             completion(false)
-            
         }
     }
     
+    
     func productDisconnected() {
-        
-        
         completion(false)
- 
-     
     }
+    
     
     func registerApp() {
         DJISDKManager.registerApp(with: self)
     }
 
+    
     public func appRegisteredWithError(_ error: Error?) {
         var message:String = "Register App Successed!"
         if (error != nil) {
@@ -71,5 +65,10 @@ class DroneControl : NSObject, DJISDKManagerDelegate {
             }
         }
         NSLog(message)
+    }
+    
+    
+    func didUpdateDatabaseDownloadProgress(_ progress: Progress) {
+        // don't care
     }
 }
