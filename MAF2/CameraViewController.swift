@@ -1,15 +1,8 @@
-//  ViewController.swift
-//  MAF2
-//
-//  Created by Matt on 9/29/19.
-//  Copyright © 2019 Admin. All rights reserved.
-//
-
 import UIKit
 import DJISDK
 import DJIWidget
 
-class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListener, DJICameraDelegate {
+class CameraViewController: UIViewController, DJIVideoFeedListener, DJICameraDelegate, DJIBaseProductDelegate {
     @IBOutlet var recordBtn: UIButton!
     @IBOutlet var changeWorkModeSegmentControl: UISegmentedControl!
     @IBOutlet var fpvPreviewView: UIView!
@@ -17,6 +10,33 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
     
     // the variable for the camera method
     var isRecording = false
+    
+    // TODO: Figure out how to handle product disconnections across the app.
+    /*guard let camera:DJICamera = self.fetchCamera() else {return}
+    if let delegate = camera.delegate, delegate === self {
+        camera.delegate = nil;
+    }
+    self.resetVideoPreview()*/
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        //self.registerApp()
+        
+        if let control = DroneControl.instance, let product = control.product {
+            product.delegate = self;
+            guard let camera:DJICamera = self.fetchCamera() else {return}
+            camera.delegate = self
+            
+            self.setupVideoPreviewer()
+            //self.showAlertViewWithTitle(title: "Success", withMessage: "product connected!")
+        }
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.currentRecordTimeLabel.isHidden = true
+    }
     
     
     // the setUpVideoPreviewer
@@ -69,30 +89,15 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         return nil
     }
     
+    func setShootPhotoMode () {
+        //DJICameraShootPhotoMode.
+    }
+    
+    
     // show a "device not connected" message
     func displayDeviceNotConnectedMessage() {
         let message:NSString = "No device (ie drone) is connected to the app!"
-        self.showAlertViewWIthTitle(title: "Connect Device", withMessage:message)
-    }
-
-    func productConnected(_ product:DJIBaseProduct?) {
-        if let product = product {
-            // as? is how to cast in Swift
-            product.delegate = self as? DJIBaseProductDelegate;
-            guard let camera:DJICamera = self.fetchCamera() else {return}
-            // we dont need to check for nil as in the tutorial because of the 'guard let' above
-            camera.delegate = self
-            
-            self.setupVideoPreviewer()
-        }
-    }
-    
-    func productDisconnected() {
-        guard let camera:DJICamera = self.fetchCamera() else {return}
-        if let delegate = camera.delegate, delegate === self {
-            camera.delegate = nil;
-        }
-        self.resetVideoPreview()
+        self.showAlertViewWithTitle(title: "Connect Device", withMessage:message)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -133,16 +138,10 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1, execute: { () -> () in
                 camera.startShootPhoto(completion: {(error:Optional<NSError>) -> () in
                     guard let errorMessage = error?.description as NSString? else {return}
-                    self.showAlertViewWIthTitle(title: "Take Photo Error", withMessage:errorMessage)
+                    self.showAlertViewWithTitle(title: "Take Photo Error", withMessage:errorMessage)
                     } as? DJICompletionBlock)
             })
         } as? DJICompletionBlock)
-    }
-    
-    
-    @IBAction func recordAction(_ sender: UIButton) {
-        guard let camera:DJICamera = self.fetchCamera() else {return}
-        //if (self.is)
     }
     
     
@@ -153,18 +152,18 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
             // to take picture
             if (segmentControl.selectedSegmentIndex == 0) {
                 camera.setMode(.shootPhoto, withCompletion: {(error:NSError) -> () in
-                    self.showAlertViewWIthTitle(title: "Set DJICameraModeShootPhoto Failed", withMessage:error.description as NSString)
+                    self.showAlertViewWithTitle(title: "Set DJICameraModeShootPhoto Failed", withMessage:error.description as NSString)
                 } as? DJICompletionBlock)
             } else if (segmentControl.selectedSegmentIndex == 1) {
                 camera.setMode(.shootPhoto, withCompletion: {(error:NSError) -> () in
-                    self.showAlertViewWIthTitle(title: "Set DJICameraModeRecordVideo Failed", withMessage:error.description as NSString)
+                    self.showAlertViewWithTitle(title: "Set DJICameraModeRecordVideo Failed", withMessage:error.description as NSString)
                 } as? DJICompletionBlock)
             }
         }
     }
     
     
-    @IBAction func confirmAlert(_ sender: UIButton) {
+    /*@IBAction func confirmAlert(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Start Survey", message: "All of the presets go here.", preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "Confirm", style: .default)
@@ -178,58 +177,13 @@ class ViewController: UIViewController, DJISDKManagerDelegate, DJIVideoFeedListe
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
-    }
+    }*/
     
-    
-    
-    
-    // from the register app tutorial
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.registerApp()
-    }
-    
-
-    func registerApp() {
-        DJISDKManager.registerApp(with : self)
-    }
-    
-    public func didUpdateDatabaseDownloadProgress(_ progress: Progress) {
-    }
-    
-    
-    public func appRegisteredWithError(_ error: Error?) {
-        var message:NSString = "Register App Successed!"
-        if (error != nil) {
-            message = "Register App Failed! Please enter your App Key and check the network."
-        }
-        else {
-            NSLog("registerAppSuccess")
-            DJISDKManager.startConnectionToProduct()
-        }
-        self.showAlertViewWIthTitle(title: "Register App", withMessage:message)
-    }
-    
-    func showAlertViewWIthTitle(title:NSString, withMessage message:NSString ) {
+    func showAlertViewWithTitle(title:NSString, withMessage message:NSString ) {
         let alert:UIAlertController = UIAlertController(title:title as String, message:message as String, preferredStyle:UIAlertController.Style.alert)
         let okAction:UIAlertAction = UIAlertAction(title:"Ok", style:UIAlertAction.Style.`default`, handler:nil)
         alert.addAction(okAction)
         self.present(alert, animated:true, completion:nil)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.currentRecordTimeLabel.isHidden = true
-    }
-    
-    // Set the shouldAutorotate to False
-    override open var shouldAutorotate: Bool {
-       return false
-    }
-
-    // Specify the orientation.
-    override open var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        return .landscape
     }
 
     override func didReceiveMemoryWarning() {
