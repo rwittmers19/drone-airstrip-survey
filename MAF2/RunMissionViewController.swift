@@ -39,7 +39,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
 //        }
     }
     
-    // zoom the map in to the location that we choose. Right now it is hard coded fo newberg OR
+    // zoom the map in to the location that we choose. Right now it is hard coded for newberg OR
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
         mapView.setRegion(coordinateRegion, animated: true)
@@ -68,11 +68,21 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             
             // create the waypoint
             let wayPoint:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
+            // set the altitde, auto speed and max speed
+            wayPoint.altitude = 50
+            wayPoint.speed = 10
             // add the new waypoint
-            mission.add(wayPoint)
+            if (CLLocationCoordinate2DIsValid(wayPoint.coordinate)) {
+                mission.add(wayPoint)
+            } else {
+                print("Waypoint not valid")
+            }
+            
   
         }
     }
+    
+    // set the waypoint altitude, auto flight speed and max flight speed
     
     
     // after the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
@@ -81,11 +91,34 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get mission control!")
             return
         }
+        
+        
+//        // start the timeline
+//        missionControl.startTimeline();
+//        print("IsTimeLineRunning")
+//        print(missionControl.isTimelineRunning)
 
         guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
             return
         }
+        
+        print("waypointCount: ", self.mission.waypointCount)
+        
+        // set the auto flight speed
+        missionOperator.setAutoFlightSpeed(0.1, withCompletion: {(error:NSError?) -> () in
+
+            if let speedError = error {
+                DispatchQueue.main.async {
+                    self.showAlertViewWithTitle(title: "Error setting auto flight speed", withMessage: speedError.localizedDescription)
+                }
+            } else {
+                self.showAlertViewWithTitle(title: "Auto speed set successfully", withMessage: "good job")
+            }
+
+        } as? DJICompletionBlock)
+        
+        
 
         // "make sure the internal state of the mission plan is valid."
         if let err = mission.checkParameters() {
@@ -104,11 +137,15 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                 state = "notSupported"
             }*/
 
-            self.showAlertViewWithTitle(title: "Mission operator state:", withMessage: String(describing: (missionOperator.currentState)))
+            self.showAlertViewWithTitle(title: "Mission operator state:", withMessage: String(describing: (missionOperator.currentState.rawValue)))
+            print("currentState.rawValue", missionOperator.currentState.rawValue)
+            
             // load the mission
             if let loadErr = missionOperator.load(mission) {
+                print(loadErr.localizedDescription)
                 self.showAlertViewWithTitle(title: "Error loading mission", withMessage: loadErr.localizedDescription)
-            } else {
+            }
+            else {
 
                 print("loaded mission: %@" , missionOperator.loadedMission)
 
