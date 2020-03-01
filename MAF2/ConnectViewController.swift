@@ -21,7 +21,7 @@ class ConnectViewController: UIViewController {
     @IBAction func retry(_ sender: Any) {
         DroneControl.setup(completion: {(success:Bool) -> Void in
             if success {
-                self.showAlertViewWithTitle(title: "SetUp Success", withMessage: "it set up correctly." )
+                //self.showAlertViewWithTitle(title: "SetUp Success", withMessage: "it set up correctly." )
                 self.performSegue(withIdentifier: "toMainMenu", sender: nil)
             } else {
                 self.showAlertViewWithTitle(title: "setup not successful", withMessage: "no good.")

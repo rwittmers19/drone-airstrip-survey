@@ -6,8 +6,22 @@ import DJIUXSDK
 
 class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     
+    let operatorStateNames = [
+        "Disconnected",
+        "Recovering",
+        "Not Supported",
+        "Ready to Upload",
+        "Uploading",
+        "Ready to Execute",
+        "Executing",
+        "Execution Paused"
+    ]
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var operatorStateLabel: UILabel!
+    @IBOutlet weak var logTextField: UITextField!
+    
+    var uiUpdateTimer: Timer!
     
     // lat and log variables
     let currentLat = 45.307067  // newberg ore
@@ -20,11 +34,19 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     // to zoom in on user location
     let locationManager = CLLocationManager()
 
+    func debugPrint(_ text: String) {
+        DispatchQueue.main.async {
+            //logTextField.text += text + "\n"
+            self.logTextField.text = (self.logTextField.text ?? "") + text + "\n"
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
         centerMapOnLocation(location: initialLocation)
+        
+        
         
         // call the method to zoom into the users current location
 //        zoomUserLocation(locationManager)
@@ -37,6 +59,25 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
 //            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
 //            locationManager.startUpdatingLocation()
 //        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        uiUpdateTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
+            guard let missionControl = DJISDKManager.missionControl() else { return }
+            guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else { return }
+            
+            DispatchQueue.main.async {
+                self.operatorStateLabel.text = String(format: "Operator State: %@",
+                                                      self.operatorStateNames[missionOperator.currentState.rawValue])
+            }
+        })
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        uiUpdateTimer.invalidate()
     }
     
     // zoom the map in to the location that we choose. Right now it is hard coded for newberg OR
@@ -137,51 +178,57 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                 state = "notSupported"
             }*/
 
-            self.showAlertViewWithTitle(title: "Mission operator state:", withMessage: String(describing: (missionOperator.currentState.rawValue)))
+            //self.showAlertViewWithTitle(title: "Mission operator state:", withMessage: String(describing: (missionOperator.currentState.rawValue)))
             print("currentState.rawValue", missionOperator.currentState.rawValue)
             
             // load the mission
             if let loadErr = missionOperator.load(mission) {
                 print(loadErr.localizedDescription)
                 self.showAlertViewWithTitle(title: "Error loading mission", withMessage: loadErr.localizedDescription)
-            }
-            else {
+            } else {
 
                 print("loaded mission: %@" , missionOperator.loadedMission)
 
                 print("mission load: ", missionOperator.currentState)
 
+                debugPrint("uploading...")
                 // upload misssion to the product
-                missionOperator.uploadMission(completion: {(error:NSError?) -> () in
+                missionOperator.uploadMission(completion: {(error:Optional<Error>) -> () in
 
                     if let uploadErr = error {
+                        self.debugPrint("upload failed")
                         DispatchQueue.main.async {
                             self.showAlertViewWithTitle(title: "Error uploading mission", withMessage: uploadErr.localizedDescription)
                         }
                     } else {
+                        self.debugPrint("upload succeeded")
                         print("mission uploadMission: ", missionOperator.currentState)
 
                         // start the mission
-                        missionOperator.startMission(completion: {(error:NSError?) -> () in
+                        self.debugPrint("starting...")
+                        missionOperator.startMission(completion: {(error:Optional<Error>) -> () in
 
                             if let startErr = error {
+                                // Getting 'Command cannot be executed'
+                                self.debugPrint("start failed")
                                 DispatchQueue.main.async {
                                     self.showAlertViewWithTitle(title: "Error starting mission", withMessage: startErr.localizedDescription)
                                 }
                             } else {
+                                self.debugPrint("start succeeded")
                                 print("mission startMission: %@", missionOperator.currentState)
 
                                 print("lastest Execution Progress: %@", missionOperator.latestExecutionProgress)
                             }
 
-                        } as? DJICompletionBlock)
+                        } as DJICompletionBlock)
                     }
 
 
 
 
 
-                } as? DJICompletionBlock)
+                } as DJICompletionBlock)
             }
 
         }
