@@ -6,6 +6,7 @@ import DJIUXSDK
 
 class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     
+    // the states based on the raw values
     let operatorStateNames = [
         "Disconnected",
         "Recovering",
@@ -19,7 +20,10 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var operatorStateLabel: UILabel!
-    @IBOutlet weak var logTextField: UITextField!
+    @IBOutlet weak var logTextView: UITextView!
+    @IBOutlet weak var clearTheWaypoints: RoundButton!
+    @IBOutlet weak var startTheMission: RoundButton!
+    
     
     var uiUpdateTimer: Timer!
     
@@ -34,10 +38,11 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     // to zoom in on user location
     let locationManager = CLLocationManager()
 
+    // print out info to a text box inside the app
     func debugPrint(_ text: String) {
         DispatchQueue.main.async {
             //logTextField.text += text + "\n"
-            self.logTextField.text = (self.logTextField.text ?? "") + text + "\n"
+            self.logTextView.text = (self.logTextView.text ?? "") + text + "\n"
         }
     }
     
@@ -46,6 +51,8 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
         let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
         centerMapOnLocation(location: initialLocation)
         
+        // make the start button hidden until the mission has loaded
+        self.startTheMission.isHidden = true
         
         
         // call the method to zoom into the users current location
@@ -63,6 +70,7 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        // output the state to the app updating it every second
         uiUpdateTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {_ in
             guard let missionControl = DJISDKManager.missionControl() else { return }
             guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else { return }
@@ -118,12 +126,28 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             } else {
                 print("Waypoint not valid")
             }
-            
-  
         }
     }
     
-    // set the waypoint altitude, auto flight speed and max flight speed
+    
+    // clear all the waypoints from the mission
+    @IBAction func clearTheWaypoints(_ sender: Any) {
+        //TODO: change the name to clearTheWaypoints
+        
+        // get and remove all the annotations in the MKMapView
+        let allAnnotation = mapView.annotations
+        mapView.removeAnnotations(allAnnotation)
+        // remove the waypoints from the mission
+        mission.removeAllWaypoints()
+    }
+    
+    // adds the waypoint symbol on the map
+    func addAnnotationOnLocation(pointedCoordinate: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = pointedCoordinate
+        annotation.title = "waypoint"
+        mapView.addAnnotation(annotation)
+    }
     
     
     // after the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
@@ -133,6 +157,14 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             return
         }
         
+        // set the heading mode, auto flight speed and max flight speed and the flightPathMode
+        // when the mission is over, don't do anything.
+        mission.headingMode = .auto
+        mission.autoFlightSpeed = 2
+        mission.maxFlightSpeed = 4
+        mission.flightPathMode = .normal
+        mission.finishedAction = DJIWaypointMissionFinishedAction.noAction
+
         
 //        // start the timeline
 //        missionControl.startTimeline();
@@ -159,26 +191,12 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
 
         } as? DJICompletionBlock)
         
-        
 
         // "make sure the internal state of the mission plan is valid."
         if let err = mission.checkParameters() {
             self.showAlertViewWithTitle(title: "Mission not valid", withMessage: err.localizedDescription)
         } else {
-            // print the current state of the mission to the phone screen
-            /*var state: String = "<other>"
 
-            if missionOperator.currentState == .disconnected {
-                state = "disconnected"
-            } else if missionOperator.currentState == .executing {
-                state = "executing"
-            } else if missionOperator.currentState == .executionPaused {
-                state = "executionPaused"
-            } else if missionOperator.currentState == .notSupported {
-                state = "notSupported"
-            }*/
-
-            //self.showAlertViewWithTitle(title: "Mission operator state:", withMessage: String(describing: (missionOperator.currentState.rawValue)))
             print("currentState.rawValue", missionOperator.currentState.rawValue)
             
             // load the mission
@@ -187,9 +205,9 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                 self.showAlertViewWithTitle(title: "Error loading mission", withMessage: loadErr.localizedDescription)
             } else {
 
-                print("loaded mission: %@" , missionOperator.loadedMission)
+                self.debugPrint(String(format: "loaded mission: %@" , missionOperator.loadedMission!))
 
-                print("mission load: ", missionOperator.currentState)
+                self.debugPrint(String(format: "mission load: %@", String(describing: missionOperator.currentState)))
 
                 debugPrint("uploading...")
                 // upload misssion to the product
@@ -204,45 +222,73 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                         self.debugPrint("upload succeeded")
                         print("mission uploadMission: ", missionOperator.currentState)
 
-                        // start the mission
-                        self.debugPrint("starting...")
-                        missionOperator.startMission(completion: {(error:Optional<Error>) -> () in
-
-                            if let startErr = error {
-                                // Getting 'Command cannot be executed'
-                                self.debugPrint("start failed")
-                                DispatchQueue.main.async {
-                                    self.showAlertViewWithTitle(title: "Error starting mission", withMessage: startErr.localizedDescription)
-                                }
-                            } else {
-                                self.debugPrint("start succeeded")
-                                print("mission startMission: %@", missionOperator.currentState)
-
-                                print("lastest Execution Progress: %@", missionOperator.latestExecutionProgress)
-                            }
-
-                        } as DJICompletionBlock)
+                        // once this completes, prompt the user to start the mission
+                        self.showAlertViewWithTitle(title: "Start the mission", withMessage: "Mash the 'Start the Mission' button")
+                        
+                        // reveal the button to the user
+                        self.startTheMission.isHidden = false
+                        
+                        
+                        //Thread.sleep(forTimeInterval: 3.0)
+                        
+//                        // start the mission
+//                        self.debugPrint("starting...")
+                        
+                        
+                        
+//                        missionOperator.startMission(completion: {(error:Optional<Error>) -> () in
+//
+//                            if let startErr = error {
+//                                // Getting 'Command cannot be executed'
+//                                self.debugPrint("start failed")
+//                                self.debugPrint(startErr.localizedDescription)
+//                                DispatchQueue.main.async {
+//                                    self.showAlertViewWithTitle(title: "Error starting mission", withMessage: startErr.localizedDescription)
+//                                }
+//                            } else {
+//                                self.debugPrint("start succeeded")
+//                                print("mission startMission: %@", missionOperator.currentState)
+//
+//                                print("lastest Execution Progress: %@", missionOperator.latestExecutionProgress)
+//                            }
+//
+//                        } as DJICompletionBlock)
                     }
-
-
-
-
-
                 } as DJICompletionBlock)
             }
-
         }
     }
     
-
+    // button to start the mission once it's loaded
     
-    // adds the waypoint symbol on the map
-    func addAnnotationOnLocation(pointedCoordinate: CLLocationCoordinate2D) {
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = pointedCoordinate
-        annotation.title = "waypoint"
-        mapView.addAnnotation(annotation)
+    @IBAction func startTheMission(_ sender: Any) {
+        // start the mission
+        self.debugPrint("starting...")
+        guard let missionControl = DJISDKManager.missionControl() else {
+            showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get mission control!")
+            return
+        }
+        guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else {
+            showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
+            return
+        }
+        missionOperator.startMission(completion: {(error:Optional<Error>) -> () in
+            if let startErr = error {
+                // Getting 'Command cannot be executed'
+                self.debugPrint("start failed")
+                self.debugPrint(startErr.localizedDescription)
+                DispatchQueue.main.async {
+                    self.showAlertViewWithTitle(title: "Error starting mission", withMessage: startErr.localizedDescription)
+                }
+            } else {
+                self.debugPrint("start succeeded")
+                print("mission startMission: %@", missionOperator.currentState)
+                print("lastest Execution Progress: %@", missionOperator.latestExecutionProgress)
+            }
+        } as DJICompletionBlock)
     }
+    
+
     
     // show the message as a pop up window in the app
     func showAlertViewWithTitle(title:String, withMessage message:String ) {
