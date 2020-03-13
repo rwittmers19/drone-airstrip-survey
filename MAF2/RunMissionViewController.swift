@@ -6,7 +6,6 @@ import DJIUXSDK
 
 class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     
-<<<<<<< HEAD
     // the states based on the raw values
     let operatorStateNames = [
         "Disconnected",
@@ -27,10 +26,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     
     
     var uiUpdateTimer: Timer!
-=======
-    
-    @IBOutlet weak var mapView: MKMapView!
->>>>>>> parent of d53bd96... Mission loads and uploads. State is "ready to execute."
     
     // lat and log variables
     let currentLat = 45.307067  // newberg ore
@@ -43,7 +38,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     // to zoom in on user location
     let locationManager = CLLocationManager()
 
-<<<<<<< HEAD
     // print out info to a text box inside the app
     func debugPrint(_ text: String) {
         DispatchQueue.main.async {
@@ -51,21 +45,16 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             self.logTextView.text = (self.logTextView.text ?? "") + text + "\n"
         }
     }
-=======
->>>>>>> parent of d53bd96... Mission loads and uploads. State is "ready to execute."
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let initialLocation = CLLocation(latitude: currentLat, longitude: currentLong)
         centerMapOnLocation(location: initialLocation)
         
-<<<<<<< HEAD
         // make the start button hidden until the mission has loaded
         self.startTheMission.isHidden = true
         
         
-=======
->>>>>>> parent of d53bd96... Mission loads and uploads. State is "ready to execute."
         // call the method to zoom into the users current location
 //        zoomUserLocation(locationManager)
 //
@@ -79,7 +68,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
 //        }
     }
     
-<<<<<<< HEAD
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         // output the state to the app updating it every second
@@ -100,8 +88,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
         uiUpdateTimer.invalidate()
     }
     
-=======
->>>>>>> parent of d53bd96... Mission loads and uploads. State is "ready to execute."
     // zoom the map in to the location that we choose. Right now it is hard coded for newberg OR
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegion(center: location.coordinate, latitudinalMeters: regionRadius, longitudinalMeters: regionRadius)
@@ -210,48 +196,32 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
         if let err = mission.checkParameters() {
             self.showAlertViewWithTitle(title: "Mission not valid", withMessage: err.localizedDescription)
         } else {
-<<<<<<< HEAD
 
-=======
-            // print the current state of the mission to the phone screen
-            /*var state: String = "<other>"
-
-            if missionOperator.currentState == .disconnected {
-                state = "disconnected"
-            } else if missionOperator.currentState == .executing {
-                state = "executing"
-            } else if missionOperator.currentState == .executionPaused {
-                state = "executionPaused"
-            } else if missionOperator.currentState == .notSupported {
-                state = "notSupported"
-            }*/
-
-            self.showAlertViewWithTitle(title: "Mission operator state:", withMessage: String(describing: (missionOperator.currentState.rawValue)))
->>>>>>> parent of d53bd96... Mission loads and uploads. State is "ready to execute."
             print("currentState.rawValue", missionOperator.currentState.rawValue)
             
             // load the mission
             if let loadErr = missionOperator.load(mission) {
                 print(loadErr.localizedDescription)
                 self.showAlertViewWithTitle(title: "Error loading mission", withMessage: loadErr.localizedDescription)
-            }
-            else {
+            } else {
 
                 self.debugPrint(String(format: "loaded mission: %@" , missionOperator.loadedMission!))
 
                 self.debugPrint(String(format: "mission load: %@", String(describing: missionOperator.currentState)))
 
+                debugPrint("uploading...")
                 // upload misssion to the product
-                missionOperator.uploadMission(completion: {(error:NSError?) -> () in
+                missionOperator.uploadMission(completion: {(error:Optional<Error>) -> () in
 
                     if let uploadErr = error {
+                        self.debugPrint("upload failed")
                         DispatchQueue.main.async {
                             self.showAlertViewWithTitle(title: "Error uploading mission", withMessage: uploadErr.localizedDescription)
                         }
                     } else {
+                        self.debugPrint("upload succeeded")
                         print("mission uploadMission: ", missionOperator.currentState)
 
-<<<<<<< HEAD
                         // once this completes, prompt the user to start the mission
                         self.showAlertViewWithTitle(title: "Start the mission", withMessage: "Mash the 'Start the Mission' button")
                         
@@ -285,29 +255,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
 //                        } as DJICompletionBlock)
                     }
                 } as DJICompletionBlock)
-=======
-                        // start the mission
-                        missionOperator.startMission(completion: {(error:NSError?) -> () in
-
-                            if let startErr = error {
-                                DispatchQueue.main.async {
-                                    self.showAlertViewWithTitle(title: "Error starting mission", withMessage: startErr.localizedDescription)
-                                }
-                            } else {
-                                print("mission startMission: %@", missionOperator.currentState)
-
-                                print("lastest Execution Progress: %@", missionOperator.latestExecutionProgress)
-                            }
-
-                        } as? DJICompletionBlock)
-                    }
-
-
-
-
-
-                } as? DJICompletionBlock)
->>>>>>> parent of d53bd96... Mission loads and uploads. State is "ready to execute."
             }
         }
     }
