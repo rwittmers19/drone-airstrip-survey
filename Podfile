@@ -3,9 +3,9 @@
 
 target 'MAF2' do
   # Comment the next line if you don't want to use dynamic frameworks
-  use_frameworks!
+  #use_frameworks!
   # Pods for MAF2
-  pod 'DJIWidget', '~> 1.6.1'
+  pod 'DJIWidget', '~> 1.6.2s'
   pod 'DJI-SDK-iOS', '~> 4.11'
   pod 'DJI-UXSDK-iOS', '~> 4.11'
 

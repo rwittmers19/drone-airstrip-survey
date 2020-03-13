@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DAB03EC6CC9E3B25E0A28B8 /* Pods_MAF2_MAF2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14A21E9155FB2E10119A70B9 /* Pods_MAF2_MAF2UITests.framework */; };
-		42AAF5C4286A03A95A979977 /* Pods_MAF2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263DDC2F7D6FD6A7F50A8E14 /* Pods_MAF2Tests.framework */; };
+		2704280B66EBBCDC7B003AFF /* libPods-MAF2-MAF2UITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD03A240D44C89D7B670BEC5 /* libPods-MAF2-MAF2UITests.a */; };
+		49B4E75B60E4401E415CFEEB /* libPods-MAF2Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 182F709124D72D177B90FB47 /* libPods-MAF2Tests.a */; };
 		846F33A523F24576002EAA1C /* DroneControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F33A423F24576002EAA1C /* DroneControl.swift */; };
 		846F33A723F26586002EAA1C /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F33A623F26586002EAA1C /* ConnectViewController.swift */; };
 		8499544F236E0BFE007D3AF1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499544E236E0BFE007D3AF1 /* RoundButton.swift */; };
@@ -23,7 +23,6 @@
 		84D98BAD2341A0D400433960 /* MAF2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98BAC2341A0D400433960 /* MAF2Tests.swift */; };
 		84D98BB82341A0D500433960 /* MAF2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98BB72341A0D500433960 /* MAF2UITests.swift */; };
 		84E3D012237E88DA001F1C48 /* RunMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3D011237E88DA001F1C48 /* RunMissionViewController.swift */; };
-		D4DEC8CF58D029E99B0EF246 /* Pods_MAF2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,11 +44,11 @@
 
 /* Begin PBXFileReference section */
 		0CCE78CE65E3D1D9B1D24EB9 /* Pods-MAF2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2Tests.release.xcconfig"; path = "Target Support Files/Pods-MAF2Tests/Pods-MAF2Tests.release.xcconfig"; sourceTree = "<group>"; };
-		14A21E9155FB2E10119A70B9 /* Pods_MAF2_MAF2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2_MAF2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		182F709124D72D177B90FB47 /* libPods-MAF2Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MAF2Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1AE1246CDA31974028836E6C /* Pods-MAF2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2Tests/Pods-MAF2Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		263DDC2F7D6FD6A7F50A8E14 /* Pods_MAF2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		846F33A423F24576002EAA1C /* DroneControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneControl.swift; sourceTree = "<group>"; };
 		846F33A623F26586002EAA1C /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		84962AB3241C329F004F448E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8499544E236E0BFE007D3AF1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		84D94429236A899100FFF8C5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "/Users/admin/Desktop/drone-airstrip-survey/MAF2/Main.storyboard"; sourceTree = "<absolute>"; };
 		84D9446A236AA17F00FFF8C5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,11 +67,16 @@
 		84D98BB92341A0D500433960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84D98BC72342F5FA00433960 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = ../../Downloads/iOS_Mobile_SDK/DJISDK.framework; sourceTree = "<group>"; };
 		84E3D011237E88DA001F1C48 /* RunMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunMissionViewController.swift; sourceTree = "<group>"; };
+		84EC66A5241C268B00B66F1E /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		84EC66AE241C29AC00B66F1E /* libDJIWidget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDJIWidget.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		84EC66B0241C2DDE00B66F1E /* libDJIWidget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDJIWidget.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3D4995CCAC321278D5F20AB /* Pods-MAF2-MAF2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		B0C047110AB70D478C259ED0 /* Pods-MAF2-MAF2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.release.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.release.xcconfig"; sourceTree = "<group>"; };
 		B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2EB3102FA5FD9EF147DDC4 /* Pods-MAF2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2.debug.xcconfig"; path = "Target Support Files/Pods-MAF2/Pods-MAF2.debug.xcconfig"; sourceTree = "<group>"; };
 		BAF1A4469A0EA6DC6480D1B0 /* Pods-MAF2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2.release.xcconfig"; path = "Target Support Files/Pods-MAF2/Pods-MAF2.release.xcconfig"; sourceTree = "<group>"; };
+		CD03A240D44C89D7B670BEC5 /* libPods-MAF2-MAF2UITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MAF2-MAF2UITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E625CE9E6F67942595E9FBBB /* libPods-MAF2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MAF2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +84,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4DEC8CF58D029E99B0EF246 /* Pods_MAF2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42AAF5C4286A03A95A979977 /* Pods_MAF2Tests.framework in Frameworks */,
+				49B4E75B60E4401E415CFEEB /* libPods-MAF2Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0DAB03EC6CC9E3B25E0A28B8 /* Pods_MAF2_MAF2UITests.framework in Frameworks */,
+				2704280B66EBBCDC7B003AFF /* libPods-MAF2-MAF2UITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,9 +109,13 @@
 		19540DE11AD655355E4D0386 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */,
-				14A21E9155FB2E10119A70B9 /* Pods_MAF2_MAF2UITests.framework */,
-				263DDC2F7D6FD6A7F50A8E14 /* Pods_MAF2Tests.framework */,
+				84962AB3241C329F004F448E /* Accelerate.framework */,
+				84EC66B0241C2DDE00B66F1E /* libDJIWidget.a */,
+				84EC66AE241C29AC00B66F1E /* libDJIWidget.a */,
+				84EC66A5241C268B00B66F1E /* DJIWidget.framework */,
+				E625CE9E6F67942595E9FBBB /* libPods-MAF2.a */,
+				CD03A240D44C89D7B670BEC5 /* libPods-MAF2-MAF2UITests.a */,
+				182F709124D72D177B90FB47 /* libPods-MAF2Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -150,6 +157,7 @@
 				84D98B952341A0D400433960 /* Products */,
 				5538D32F5A20A1C44D56DCB2 /* Pods */,
 				19540DE11AD655355E4D0386 /* Frameworks */,
+				84EC66AD241C28AC00B66F1E /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +208,14 @@
 				84D98BB92341A0D500433960 /* Info.plist */,
 			);
 			path = MAF2UITests;
+			sourceTree = "<group>";
+		};
+		84EC66AD241C28AC00B66F1E /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,14 +425,12 @@
 				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
 				"${PODS_ROOT}/DJI-UXSDK-iOS/iOS_UXSDK/DJIUXSDK.framework",
 				"${PODS_ROOT}/DJIWidget/FFmpeg/FFmpeg.framework",
-				"${BUILT_PRODUCTS_DIR}/DJIWidget/DJIWidget.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIUXSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFmpeg.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIWidget.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -433,14 +447,12 @@
 				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
 				"${PODS_ROOT}/DJI-UXSDK-iOS/iOS_UXSDK/DJIUXSDK.framework",
 				"${PODS_ROOT}/DJIWidget/FFmpeg/FFmpeg.framework",
-				"${BUILT_PRODUCTS_DIR}/DJIWidget/DJIWidget.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIUXSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFmpeg.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIWidget.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -624,7 +636,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = MAF2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -649,7 +661,7 @@
 					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = MAF2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2;
 				PRODUCT_NAME = "$(TARGET_NAME)";

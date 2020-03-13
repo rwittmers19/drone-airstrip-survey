@@ -250,7 +250,7 @@
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="syI-g6-eIa">
-                                <rect key="frame" x="438" y="44" width="394" height="298"/>
+                                <rect key="frame" x="182" y="44" width="650" height="298"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
@@ -274,6 +274,7 @@
                                     <action selector="runMission:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="izm-oT-nCG"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Operator State: X" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-8h-HGA">
                                 <rect key="frame" x="64" y="44" width="377" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -325,17 +326,23 @@
                                     <action selector="runMission:" destination="YKu-Ji-h8V" eventType="touchUpInside" id="eLG-gz-StS"/>
                                 </connections>
                             </button>
+=======
+>>>>>>> parent of d53bd96... Mission loads and uploads. State is "ready to execute."
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="TsG-Km-9ZZ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map Select" id="mjM-aI-JOb"/>
                     <connections>
+<<<<<<< HEAD
                         <outlet property="clearTheWaypoints" destination="psE-iz-owy" id="re4-JL-5lV"/>
                         <outlet property="logTextView" destination="xXP-lL-BLD" id="wYn-sH-4G2"/>
                         <outlet property="mapView" destination="syI-g6-eIa" id="KOm-HX-nnj"/>
                         <outlet property="operatorStateLabel" destination="fVw-8h-HGA" id="nPN-LL-4dK"/>
                         <outlet property="startTheMission" destination="ohv-lW-aUC" id="KX1-wF-tYt"/>
+=======
+                        <outlet property="mapView" destination="syI-g6-eIa" id="KOm-HX-nnj"/>
+>>>>>>> parent of d53bd96... Mission loads and uploads. State is "ready to execute."
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4e-BC-4k1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -345,7 +352,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="671.65178571428567" y="-26.086956521739133"/>
+            <point key="canvasLocation" x="672" y="-25"/>
         </scene>
         <!--Run Mission View Controller-->
         <scene sceneID="woy-mC-7XG">
@@ -479,6 +486,7 @@
         <image name="DF_dl_logo_MAF_Logo_BLACK" width="1200" height="600"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uOl-xr-doM"/>
+        <segue reference="xUu-MS-0ag"/>
+        <segue reference="psH-da-nKg"/>
     </inferredMetricsTieBreakers>
 </document>
