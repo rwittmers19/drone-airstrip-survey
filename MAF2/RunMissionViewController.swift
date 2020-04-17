@@ -22,7 +22,11 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var operatorStateLabel: UILabel!
     @IBOutlet weak var logTextView: UITextView!
     @IBOutlet weak var clearTheWaypoints: RoundButton!
+    
+    @IBOutlet weak var loadTheMission: RoundButton!
+    
     @IBOutlet weak var startTheMission: RoundButton!
+    
     
     
     var uiUpdateTimer: Timer!
@@ -108,31 +112,86 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
     
     
 
-    // when the map gets a long press, it adds a waypoint.
+    /* when the map gets a long press, it adds a waypoint. There is a maximum of
+     two waypoints that the user can add. Later on, we add the rest of the waypoints
+     automatically to create the "box" shape. */
     @IBAction func longPressAddWayPoint(_ gestureRecognizer: UILongPressGestureRecognizer) {
+        let MAX_WAYPOINT_NUM = 4
+        
         if gestureRecognizer.state == UIGestureRecognizer.State.began {
             let touchPoint: CGPoint = gestureRecognizer.location(in: mapView)
-            let newCoordinate: CLLocationCoordinate2D = mapView.convert(touchPoint, toCoordinateFrom: mapView)
-            addAnnotationOnLocation(pointedCoordinate: newCoordinate)
             
-            // create the waypoint
-            let wayPoint:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
-            // set the altitde, auto speed and max speed
-            wayPoint.altitude = 50
-            wayPoint.speed = 10
-            // add the new waypoint
-            if (CLLocationCoordinate2DIsValid(wayPoint.coordinate)) {
-                mission.add(wayPoint)
+            // a max of two waypoints are allowed. If they try to add another, print an error message
+            if (mission.waypointCount < MAX_WAYPOINT_NUM) {
+                let newCoordinate: CLLocationCoordinate2D = mapView.convert(touchPoint, toCoordinateFrom: mapView)
+                
+                // put a annotation on the map for the user
+                addAnnotationOnLocation(pointedCoordinate: newCoordinate)
+                
+                // create the waypoint
+                let wayPoint:DJIWaypoint = DJIWaypoint.init(coordinate: newCoordinate)
+                // set the altitde, auto speed and max speed
+                wayPoint.altitude = 50
+                wayPoint.speed = 10
+                // add the new waypoint
+                if (CLLocationCoordinate2DIsValid(wayPoint.coordinate)) {
+                    mission.add(wayPoint)
+                } else {
+                    print("Waypoint not valid")
+                }
             } else {
-                print("Waypoint not valid")
+            showAlertViewWithTitle(title: "Too many waypoints!", withMessage: "The waypoints you add are the four corners of the box. A max of four are allowed. If you want to adjust the location of the box, push the 'Clear the Waypoints' button and start again. Thanks.")
+            }
+            
+        }
+    
+    }
+    
+    /* the user longPresses the screen to add two waypoints which are the ends
+     of box. This method fills out the rest of the "box" shape automatically. The box has a predetermined
+     width and the only thing the user can change is the length. As of now,
+     if the user want to move the box, he must clear all the waypoints and start again. Make the runway approx. 60 meters wide.*/
+    func addWaypointsInBoxShape(cornersOfBox: [DJIWaypoint]) {
+        // iterate through the waypoints, add the corresponding amount to the lat and long to add a new waypoint
+        // in the correct direction.
+        for corner in cornersOfBox {
+            // the lat and long for the new waypoint
+            let sonLat = corner.coordinate.latitude.advanced(by: 0)
+            let sonLong = corner.coordinate.longitude.advanced(by: 0.0004)
+            
+            // the new coordinate based off the new lat and long
+            let sonCoordinate = CLLocationCoordinate2D(latitude: sonLat, longitude: sonLong)
+            
+            
+            // for testing, add the new annotation on the map
+            addAnnotationOnLocation(pointedCoordinate: sonCoordinate)
+        }
+        
+        // figure out which waypoints are on the same "side." There are only four waypoints. To determine which are on the same side: pick a random point, find the other point that has the closest
+        
+        // the four corners
+        let waypoint0 = cornersOfBox[0]
+        let waypoint1 = cornersOfBox[1]
+        let waypoint2 = cornersOfBox[2]
+        let waypoint3 = cornersOfBox[3]
+        
+        var closestWaypointTo0 = waypoint1
+        for index in 2...3 {
+            //if (waypoint0.coordinate.latitude - waypoint1.coordinate.latitude < )
+        }
+        
+        for corner in cornersOfBox {
+            if (waypoint0.coordinate.latitude < corner.coordinate.latitude) {
+                closestWaypointTo0 = corner
             }
         }
+        
+
     }
     
     
     // clear all the waypoints from the mission
     @IBAction func clearTheWaypoints(_ sender: Any) {
-        //TODO: change the name to clearTheWaypoints
 
         // get and remove all the annotations in the MKMapView
         let allAnnotation = mapView.annotations
@@ -149,9 +208,22 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
         mapView.addAnnotation(annotation)
     }
     
+
     
     // after the waypoints are added to the map, it takes the coordinates and loads the mission, uploads the mission then starts it.
-    @IBAction func runMission(_ sender: Any) {
+    @IBAction func loadTheMission(_ sender: Any) {
+        let MAX_WAYPOINT_NUM = 4
+        
+        // once there are four waypoints, call the box method to add the others. if less than four, print message to add more
+//        if (mission.waypointCount < MAX_WAYPOINT_NUM) {
+//            showAlertViewWithTitle(title: "Four waypoints are required", withMessage: "You must add markers which are the corners of the box. Pls add the other corners")
+//        } else {
+//            // call the method to create a "box" shape of waypoints
+//            addWaypointsInBoxShape(cornersOfBox: mission.allWaypoints())
+//        }
+        
+        
+        
         guard let missionControl = DJISDKManager.missionControl() else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get mission control!")
             return
@@ -258,7 +330,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
     // button to start the mission once it's loaded
     
     @IBAction func startTheMission(_ sender: Any) {

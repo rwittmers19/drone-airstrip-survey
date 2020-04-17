@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2704280B66EBBCDC7B003AFF /* libPods-MAF2-MAF2UITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CD03A240D44C89D7B670BEC5 /* libPods-MAF2-MAF2UITests.a */; };
-		49B4E75B60E4401E415CFEEB /* libPods-MAF2Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 182F709124D72D177B90FB47 /* libPods-MAF2Tests.a */; };
+		71881C2AEBA25CB2458C61A4 /* Pods_MAF2_MAF2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB43BD168E3F1887010D8D90 /* Pods_MAF2_MAF2UITests.framework */; };
 		846F33A523F24576002EAA1C /* DroneControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F33A423F24576002EAA1C /* DroneControl.swift */; };
 		846F33A723F26586002EAA1C /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846F33A623F26586002EAA1C /* ConnectViewController.swift */; };
 		8499544F236E0BFE007D3AF1 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8499544E236E0BFE007D3AF1 /* RoundButton.swift */; };
@@ -23,6 +22,9 @@
 		84D98BAD2341A0D400433960 /* MAF2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98BAC2341A0D400433960 /* MAF2Tests.swift */; };
 		84D98BB82341A0D500433960 /* MAF2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D98BB72341A0D500433960 /* MAF2UITests.swift */; };
 		84E3D012237E88DA001F1C48 /* RunMissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E3D011237E88DA001F1C48 /* RunMissionViewController.swift */; };
+		84F981E52436842A002C2D00 /* DJISDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 846AD1992425517D0057290B /* DJISDK.framework */; };
+		B9CB561039EB1E1998E05349 /* Pods_MAF2Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB29BB422980DBCD9CE2858A /* Pods_MAF2Tests.framework */; };
+		C86B9D8DD2EE0D3927F9A698 /* Pods_MAF2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38501DFCBDB7E504AE6F8DD5 /* Pods_MAF2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +45,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0CCE78CE65E3D1D9B1D24EB9 /* Pods-MAF2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2Tests.release.xcconfig"; path = "Target Support Files/Pods-MAF2Tests/Pods-MAF2Tests.release.xcconfig"; sourceTree = "<group>"; };
-		182F709124D72D177B90FB47 /* libPods-MAF2Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MAF2Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1AE1246CDA31974028836E6C /* Pods-MAF2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2Tests/Pods-MAF2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		38501DFCBDB7E504AE6F8DD5 /* Pods_MAF2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		845A7E8E24254F0900DC93D6 /* FFmpeg.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FFmpeg.framework; path = Pods/DJIWidget/FFmpeg/FFmpeg.framework; sourceTree = "<group>"; };
+		845A7E9224254F5700DC93D6 /* DJIWidget */ = {isa = PBXFileReference; lastKnownFileType = folder; name = DJIWidget; path = Pods/DJIWidget/DJIWidget; sourceTree = "<group>"; };
+		846AD1992425517D0057290B /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = MAF2/DJISDK.framework; sourceTree = "<group>"; };
 		846F33A423F24576002EAA1C /* DroneControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DroneControl.swift; sourceTree = "<group>"; };
 		846F33A623F26586002EAA1C /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		8475EC4F242543D000CBCDA6 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = "Pods/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework"; sourceTree = "<group>"; };
+		8475EC5324254CD300CBCDA6 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = "../iOS_Mobile_SDK-2/DJISDK.framework"; sourceTree = "<group>"; };
 		84962AB3241C329F004F448E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		8499544E236E0BFE007D3AF1 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		84D94429236A899100FFF8C5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "/Users/admin/Desktop/drone-airstrip-survey/MAF2/Main.storyboard"; sourceTree = "<absolute>"; };
@@ -65,18 +70,18 @@
 		84D98BB32341A0D500433960 /* MAF2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MAF2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84D98BB72341A0D500433960 /* MAF2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MAF2UITests.swift; sourceTree = "<group>"; };
 		84D98BB92341A0D500433960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		84D98BC72342F5FA00433960 /* DJISDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DJISDK.framework; path = ../../Downloads/iOS_Mobile_SDK/DJISDK.framework; sourceTree = "<group>"; };
 		84E3D011237E88DA001F1C48 /* RunMissionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunMissionViewController.swift; sourceTree = "<group>"; };
 		84EC66A5241C268B00B66F1E /* DJIWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DJIWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EC66AE241C29AC00B66F1E /* libDJIWidget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDJIWidget.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		84EC66B0241C2DDE00B66F1E /* libDJIWidget.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libDJIWidget.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A3D4995CCAC321278D5F20AB /* Pods-MAF2-MAF2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		B0C047110AB70D478C259ED0 /* Pods-MAF2-MAF2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.release.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.release.xcconfig"; sourceTree = "<group>"; };
-		B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA2EB3102FA5FD9EF147DDC4 /* Pods-MAF2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2.debug.xcconfig"; path = "Target Support Files/Pods-MAF2/Pods-MAF2.debug.xcconfig"; sourceTree = "<group>"; };
-		BAF1A4469A0EA6DC6480D1B0 /* Pods-MAF2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2.release.xcconfig"; path = "Target Support Files/Pods-MAF2/Pods-MAF2.release.xcconfig"; sourceTree = "<group>"; };
-		CD03A240D44C89D7B670BEC5 /* libPods-MAF2-MAF2UITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MAF2-MAF2UITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E625CE9E6F67942595E9FBBB /* libPods-MAF2.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MAF2.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9224D114C476B51150852311 /* Pods-MAF2Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2Tests.release.xcconfig"; path = "Target Support Files/Pods-MAF2Tests/Pods-MAF2Tests.release.xcconfig"; sourceTree = "<group>"; };
+		A8576B4AF2D976C506C83486 /* Pods-MAF2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2.release.xcconfig"; path = "Target Support Files/Pods-MAF2/Pods-MAF2.release.xcconfig"; sourceTree = "<group>"; };
+		ADA57F3B840D8886D7D4F877 /* Pods-MAF2-MAF2UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B142FBD7A0C3CA620DBCEDC3 /* Pods-MAF2Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2Tests.debug.xcconfig"; path = "Target Support Files/Pods-MAF2Tests/Pods-MAF2Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		C203AFF4830B0A6E6CCDEEAD /* Pods-MAF2-MAF2UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2-MAF2UITests.release.xcconfig"; path = "Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests.release.xcconfig"; sourceTree = "<group>"; };
+		CB29BB422980DBCD9CE2858A /* Pods_MAF2Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CCBAD17D25CE0B1F7BE56410 /* Pods-MAF2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAF2.debug.xcconfig"; path = "Target Support Files/Pods-MAF2/Pods-MAF2.debug.xcconfig"; sourceTree = "<group>"; };
+		FB43BD168E3F1887010D8D90 /* Pods_MAF2_MAF2UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAF2_MAF2UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F981E52436842A002C2D00 /* DJISDK.framework in Frameworks */,
+				C86B9D8DD2EE0D3927F9A698 /* Pods_MAF2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				49B4E75B60E4401E415CFEEB /* libPods-MAF2Tests.a in Frameworks */,
+				B9CB561039EB1E1998E05349 /* Pods_MAF2Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2704280B66EBBCDC7B003AFF /* libPods-MAF2-MAF2UITests.a in Frameworks */,
+				71881C2AEBA25CB2458C61A4 /* Pods_MAF2_MAF2UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,13 +116,18 @@
 		19540DE11AD655355E4D0386 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				846AD1992425517D0057290B /* DJISDK.framework */,
+				845A7E9224254F5700DC93D6 /* DJIWidget */,
+				845A7E8E24254F0900DC93D6 /* FFmpeg.framework */,
+				8475EC4F242543D000CBCDA6 /* DJISDK.framework */,
+				8475EC5324254CD300CBCDA6 /* DJISDK.framework */,
 				84962AB3241C329F004F448E /* Accelerate.framework */,
 				84EC66B0241C2DDE00B66F1E /* libDJIWidget.a */,
 				84EC66AE241C29AC00B66F1E /* libDJIWidget.a */,
 				84EC66A5241C268B00B66F1E /* DJIWidget.framework */,
-				E625CE9E6F67942595E9FBBB /* libPods-MAF2.a */,
-				CD03A240D44C89D7B670BEC5 /* libPods-MAF2-MAF2UITests.a */,
-				182F709124D72D177B90FB47 /* libPods-MAF2Tests.a */,
+				38501DFCBDB7E504AE6F8DD5 /* Pods_MAF2.framework */,
+				FB43BD168E3F1887010D8D90 /* Pods_MAF2_MAF2UITests.framework */,
+				CB29BB422980DBCD9CE2858A /* Pods_MAF2Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -123,12 +135,12 @@
 		5538D32F5A20A1C44D56DCB2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BA2EB3102FA5FD9EF147DDC4 /* Pods-MAF2.debug.xcconfig */,
-				BAF1A4469A0EA6DC6480D1B0 /* Pods-MAF2.release.xcconfig */,
-				A3D4995CCAC321278D5F20AB /* Pods-MAF2-MAF2UITests.debug.xcconfig */,
-				B0C047110AB70D478C259ED0 /* Pods-MAF2-MAF2UITests.release.xcconfig */,
-				1AE1246CDA31974028836E6C /* Pods-MAF2Tests.debug.xcconfig */,
-				0CCE78CE65E3D1D9B1D24EB9 /* Pods-MAF2Tests.release.xcconfig */,
+				CCBAD17D25CE0B1F7BE56410 /* Pods-MAF2.debug.xcconfig */,
+				A8576B4AF2D976C506C83486 /* Pods-MAF2.release.xcconfig */,
+				ADA57F3B840D8886D7D4F877 /* Pods-MAF2-MAF2UITests.debug.xcconfig */,
+				C203AFF4830B0A6E6CCDEEAD /* Pods-MAF2-MAF2UITests.release.xcconfig */,
+				B142FBD7A0C3CA620DBCEDC3 /* Pods-MAF2Tests.debug.xcconfig */,
+				9224D114C476B51150852311 /* Pods-MAF2Tests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -151,7 +163,6 @@
 		84D98B8B2341A0D400433960 = {
 			isa = PBXGroup;
 			children = (
-				84D98BC72342F5FA00433960 /* DJISDK.framework */,
 				84D98B962341A0D400433960 /* MAF2 */,
 				84D98BB62341A0D500433960 /* MAF2UITests */,
 				84D98B952341A0D400433960 /* Products */,
@@ -213,7 +224,6 @@
 		84EC66AD241C28AC00B66F1E /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				B67DB825C8F28FCAA40231E9 /* Pods_MAF2.framework */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -225,11 +235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84D98BBC2341A0D500433960 /* Build configuration list for PBXNativeTarget "MAF2" */;
 			buildPhases = (
-				2C642D9EF6FFA4C56E22D007 /* [CP] Check Pods Manifest.lock */,
+				A90C8C1E00DC9B193551BEE6 /* [CP] Check Pods Manifest.lock */,
 				84D98B902341A0D400433960 /* Sources */,
 				84D98B912341A0D400433960 /* Frameworks */,
 				84D98B922341A0D400433960 /* Resources */,
-				A49591AD64C1404B8E995FAC /* [CP] Embed Pods Frameworks */,
+				8CEF4C64F1C4A0C29F2A7836 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -244,7 +254,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84D98BBF2341A0D500433960 /* Build configuration list for PBXNativeTarget "MAF2Tests" */;
 			buildPhases = (
-				70FF91BE2574A01CCE144FAE /* [CP] Check Pods Manifest.lock */,
+				AE9B0D8AC8F54EC0DD56A27F /* [CP] Check Pods Manifest.lock */,
 				84D98BA42341A0D400433960 /* Sources */,
 				84D98BA52341A0D400433960 /* Frameworks */,
 				84D98BA62341A0D400433960 /* Resources */,
@@ -263,11 +273,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84D98BC22341A0D500433960 /* Build configuration list for PBXNativeTarget "MAF2UITests" */;
 			buildPhases = (
-				6A47C0CF9AD83157D5809B4E /* [CP] Check Pods Manifest.lock */,
+				4C9069D5B33A84A905561752 /* [CP] Check Pods Manifest.lock */,
 				84D98BAF2341A0D500433960 /* Sources */,
 				84D98BB02341A0D500433960 /* Frameworks */,
 				84D98BB12341A0D500433960 /* Resources */,
-				D7E0FF4C39FE469FB27F9E23 /* [CP] Embed Pods Frameworks */,
+				01AC39CA2ACBACF12E1EAF0D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -361,83 +371,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2C642D9EF6FFA4C56E22D007 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MAF2-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6A47C0CF9AD83157D5809B4E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MAF2-MAF2UITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		70FF91BE2574A01CCE144FAE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MAF2Tests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A49591AD64C1404B8E995FAC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MAF2/Pods-MAF2-frameworks.sh",
-				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
-				"${PODS_ROOT}/DJI-UXSDK-iOS/iOS_UXSDK/DJIUXSDK.framework",
-				"${PODS_ROOT}/DJIWidget/FFmpeg/FFmpeg.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIUXSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFmpeg.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MAF2/Pods-MAF2-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D7E0FF4C39FE469FB27F9E23 /* [CP] Embed Pods Frameworks */ = {
+		01AC39CA2ACBACF12E1EAF0D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -447,16 +381,108 @@
 				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
 				"${PODS_ROOT}/DJI-UXSDK-iOS/iOS_UXSDK/DJIUXSDK.framework",
 				"${PODS_ROOT}/DJIWidget/FFmpeg/FFmpeg.framework",
+				"${BUILT_PRODUCTS_DIR}/DJIWidget/DJIWidget.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIUXSDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFmpeg.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIWidget.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MAF2-MAF2UITests/Pods-MAF2-MAF2UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4C9069D5B33A84A905561752 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MAF2-MAF2UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CEF4C64F1C4A0C29F2A7836 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MAF2/Pods-MAF2-frameworks.sh",
+				"${PODS_ROOT}/DJI-SDK-iOS/iOS_Mobile_SDK/DJISDK.framework",
+				"${PODS_ROOT}/DJI-UXSDK-iOS/iOS_UXSDK/DJIUXSDK.framework",
+				"${PODS_ROOT}/DJIWidget/FFmpeg/FFmpeg.framework",
+				"${BUILT_PRODUCTS_DIR}/DJIWidget/DJIWidget.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJISDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIUXSDK.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FFmpeg.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DJIWidget.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MAF2/Pods-MAF2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A90C8C1E00DC9B193551BEE6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MAF2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE9B0D8AC8F54EC0DD56A27F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MAF2Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -561,10 +587,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				KEEP_PRIVATE_EXTERNS = YES;
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_STYLE = debugging;
@@ -610,9 +639,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				HEADER_SEARCH_PATHS = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				KEEP_PRIVATE_EXTERNS = YES;
+				LIBRARY_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
 				SDKROOT = iphoneos;
 				STRIP_INSTALLED_PRODUCT = NO;
 				STRIP_STYLE = debugging;
@@ -625,7 +657,7 @@
 		};
 		84D98BBD2341A0D500433960 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA2EB3102FA5FD9EF147DDC4 /* Pods-MAF2.debug.xcconfig */;
+			baseConfigurationReference = CCBAD17D25CE0B1F7BE56410 /* Pods-MAF2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -634,9 +666,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Pods/DJI-SDK-iOS/iOS_Mobile_SDK",
+					"$(PROJECT_DIR)/Pods/DJIWidget/FFmpeg",
+					"$(PROJECT_DIR)/MAF2",
 				);
 				INFOPLIST_FILE = MAF2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -650,7 +685,7 @@
 		};
 		84D98BBE2341A0D500433960 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAF1A4469A0EA6DC6480D1B0 /* Pods-MAF2.release.xcconfig */;
+			baseConfigurationReference = A8576B4AF2D976C506C83486 /* Pods-MAF2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -659,9 +694,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Pods/DJI-SDK-iOS/iOS_Mobile_SDK",
+					"$(PROJECT_DIR)/Pods/DJIWidget/FFmpeg",
+					"$(PROJECT_DIR)/MAF2",
 				);
 				INFOPLIST_FILE = MAF2/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MAF2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -674,7 +712,7 @@
 		};
 		84D98BC02341A0D500433960 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AE1246CDA31974028836E6C /* Pods-MAF2Tests.debug.xcconfig */;
+			baseConfigurationReference = B142FBD7A0C3CA620DBCEDC3 /* Pods-MAF2Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -691,7 +729,7 @@
 		};
 		84D98BC12341A0D500433960 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0CCE78CE65E3D1D9B1D24EB9 /* Pods-MAF2Tests.release.xcconfig */;
+			baseConfigurationReference = 9224D114C476B51150852311 /* Pods-MAF2Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -708,7 +746,7 @@
 		};
 		84D98BC32341A0D500433960 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A3D4995CCAC321278D5F20AB /* Pods-MAF2-MAF2UITests.debug.xcconfig */;
+			baseConfigurationReference = ADA57F3B840D8886D7D4F877 /* Pods-MAF2-MAF2UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = V8CH9PK865;
@@ -724,7 +762,7 @@
 		};
 		84D98BC42341A0D500433960 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B0C047110AB70D478C259ED0 /* Pods-MAF2-MAF2UITests.release.xcconfig */;
+			baseConfigurationReference = C203AFF4830B0A6E6CCDEEAD /* Pods-MAF2-MAF2UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				DEVELOPMENT_TEAM = V8CH9PK865;
