@@ -25,6 +25,11 @@ DerivedData/
 *.perspectivev3
 !default.perspectivev3
 
+
+# ignore the framework
+*.framework
+
+
 ## Gcc Patch
 /*.gcno
 © 2019 GitHub, Inc.
