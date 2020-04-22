@@ -76,6 +76,9 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             }
         })
         
+        // inform the user how to add a waypoint
+        self.showAlertViewWithTitle(title: "Add waypoint", withMessage: "Long press the map where you want to add a waypoint.")
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
