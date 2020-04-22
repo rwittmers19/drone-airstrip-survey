@@ -61,15 +61,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
         
         // call the method to zoom into the users current location
 //        zoomUserLocation(locationManager)
-//
-//        // to get user location
-//        locationManager.requestAlwaysAuthorization()
-//        locationManager.requestWhenInUseAuthorization()
-//        if CLLocationManager.locationServicesEnabled() {
-//            locationManager.delegate = self
-//            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-//            locationManager.startUpdatingLocation()
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -116,7 +107,8 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
      two waypoints that the user can add. Later on, we add the rest of the waypoints
      automatically to create the "box" shape. */
     @IBAction func longPressAddWayPoint(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        let MAX_WAYPOINT_NUM = 4
+        // TODO: when create box, I have this as 4. For testing purposes, it is now 100
+        let MAX_WAYPOINT_NUM = 100
         
         if gestureRecognizer.state == UIGestureRecognizer.State.began {
             let touchPoint: CGPoint = gestureRecognizer.location(in: mapView)
@@ -166,27 +158,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             // for testing, add the new annotation on the map
             addAnnotationOnLocation(pointedCoordinate: sonCoordinate)
         }
-        
-        // figure out which waypoints are on the same "side." There are only four waypoints. To determine which are on the same side: pick a random point, find the other point that has the closest
-        
-        // the four corners
-        let waypoint0 = cornersOfBox[0]
-        let waypoint1 = cornersOfBox[1]
-        let waypoint2 = cornersOfBox[2]
-        let waypoint3 = cornersOfBox[3]
-        
-        var closestWaypointTo0 = waypoint1
-        for index in 2...3 {
-            //if (waypoint0.coordinate.latitude - waypoint1.coordinate.latitude < )
-        }
-        
-        for corner in cornersOfBox {
-            if (waypoint0.coordinate.latitude < corner.coordinate.latitude) {
-                closestWaypointTo0 = corner
-            }
-        }
-        
-
     }
     
     
@@ -236,12 +207,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
         mission.maxFlightSpeed = 4
         mission.flightPathMode = .normal
         mission.finishedAction = DJIWaypointMissionFinishedAction.noAction
-
-        
-//        // start the timeline
-//        missionControl.startTimeline();
-//        print("IsTimeLineRunning")
-//        print(missionControl.isTimelineRunning)
 
         guard let missionOperator:DJIWaypointMissionOperator = missionControl.waypointMissionOperator() else {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
@@ -299,32 +264,6 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                         
                         // reveal the button to the user
                         self.startTheMission.isHidden = false
-                        
-                        
-                        //Thread.sleep(forTimeInterval: 3.0)
-                        
-//                        // start the mission
-//                        self.debugPrint("starting...")
-                        
-                        
-                        
-//                        missionOperator.startMission(completion: {(error:Optional<Error>) -> () in
-//
-//                            if let startErr = error {
-//                                // Getting 'Command cannot be executed'
-//                                self.debugPrint("start failed")
-//                                self.debugPrint(startErr.localizedDescription)
-//                                DispatchQueue.main.async {
-//                                    self.showAlertViewWithTitle(title: "Error starting mission", withMessage: startErr.localizedDescription)
-//                                }
-//                            } else {
-//                                self.debugPrint("start succeeded")
-//                                print("mission startMission: %@", missionOperator.currentState)
-//
-//                                print("lastest Execution Progress: %@", missionOperator.latestExecutionProgress)
-//                            }
-//
-//                        } as DJICompletionBlock)
                     }
                 } as DJICompletionBlock)
             }
@@ -343,6 +282,9 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
             showAlertViewWithTitle(title: "Error", withMessage: "Couldn't get waypoint operator!")
             return
         }
+    
+        
+        
         missionOperator.startMission(completion: {(error:Optional<Error>) -> () in
             if let startErr = error {
                 // Getting 'Command cannot be executed'
@@ -355,6 +297,11 @@ class RunMissionViewController: UIViewController, CLLocationManagerDelegate {
                 self.debugPrint("start succeeded")
                 print("mission startMission: %@", missionOperator.currentState)
                 print("lastest Execution Progress: %@", missionOperator.latestExecutionProgress)
+            
+                
+                
+                // send the drone home after the mission is finished
+                self.mission.finishedAction = .goHome
             }
         } as DJICompletionBlock)
     }
